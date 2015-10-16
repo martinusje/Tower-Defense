@@ -7,7 +7,7 @@ import java.awt.Color;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Robot extends Actor
+public class Robot extends SmoothMover
 {
     int x = 0;
     int y = 0;
