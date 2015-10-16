@@ -6,7 +6,7 @@ import java.util.List;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Bullet extends Actor
+public class Bullet extends SmoothMover
 {
     private int direction, speed, robotX, robotY;
     int counter = 0;
@@ -23,12 +23,6 @@ public class Bullet extends Actor
             setRotation(getRotation());
             counter++;
         }
-        //if(getX() == robotX && getIntersectingObjects(Robot.class).isEmpty() && counter == 0) {
-        //    turnTowards(((Basic_Machine)machine).returnRobotX(), ((Basic_Machine)machine).returnRobotY());
-        //    setRotation(getRotation() + 180);
-        //    counter ++;
-        //} 
-        
         if (counter == 0) {
             turnTowards(((Basic_Machine)getWorld().getObjects(Basic_Machine.class).get(0)).returnRobotX(), ((Basic_Machine)getWorld().getObjects(Basic_Machine.class).get(0)).returnRobotY());
         }
