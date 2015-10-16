@@ -17,9 +17,12 @@ public class TowerDefenseWorld extends World
     public TowerDefenseWorld()
     {    
         super(192, 192, 4);
-        
         getBackground().setColor(Color.black);
-        getBackground().drawImage(new GreenfootImage("steelPlateBackground.jpg"), 0, 0);        
+        GreenfootImage pic = new GreenfootImage(600, 400);
+        pic.setColor(new Color(Greenfoot.getRandomNumber(255 + 1), Greenfoot.getRandomNumber(255 + 1), Greenfoot.getRandomNumber(255 + 1)));
+        pic.fill();
+        setBackground(pic);
+        //getBackground().drawImage(new GreenfootImage("steelPlateBackground.jpg"), 0, 0);        
         getBackground().drawImage(new GreenfootImage("Track 2.png"), 0, 0);
         getBackground().drawRect(0, 0,  640, 640);
         
