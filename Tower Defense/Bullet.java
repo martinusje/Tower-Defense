@@ -27,7 +27,7 @@ public class Bullet extends SmoothMover
             turnTowards(((Basic_Machine)getWorld().getObjects(Basic_Machine.class).get(0)).returnRobotX(), ((Basic_Machine)getWorld().getObjects(Basic_Machine.class).get(0)).returnRobotY());
         }
         move(speed);
-        if(getX() >= 160 || getX() == 0 || getY() >= 160 || getY() == 0) {
+        if(getX() >= 640 || getX() == 0 || getY() >= 640 || getY() == 0) {
             getWorld().removeObject(this);
         }
         

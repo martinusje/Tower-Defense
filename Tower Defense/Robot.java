@@ -28,7 +28,7 @@ public class Robot extends SmoothMover
      */
     public void act() 
     {
-        if (counter == 3) {
+        if (counter == 2) {
             Color Black = new Color(0,0,0,255);    
             if(getWorld().getColorAt(getX()+1, getY()).getRed() < 1 && getWorld().getColorAt(getX()+1, getY()).getGreen() < 1 && getWorld().getColorAt(getX()+1, getY()).getBlue() < 1 && x !=-1)      
             {      

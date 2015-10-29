@@ -11,7 +11,7 @@ import java.util.Collections;
  */
 public class Basic_Machine extends Actor
 {
-    int counter = 0, robotX, robotY;
+    int counter = 0, robotX, robotY, active = 0;
     
     public int returnRobotX()
     {
@@ -23,8 +23,20 @@ public class Basic_Machine extends Actor
     }
     public void act() 
     {
-           List<Robot> robots = getObjectsInRange(200, Robot.class);
-           if(robots.size() != 0) {
+            if(Greenfoot.mouseDragged(this) && active == 0) {
+                counter = 0;
+                MouseInfo mouse = Greenfoot.getMouseInfo();
+                this.setLocation(mouse.getX(), mouse.getY());
+            }
+            
+            if(Greenfoot.mouseClicked(this)) {
+                active = 1;
+                getWorld().addObject(new Basic_Machine(), 704, 64);
+            }
+           
+        
+            List<Robot> robots = getObjectsInRange(200, Robot.class);
+            if(robots.size() != 0 && active == 1) {
                 ArrayList counterArray = new ArrayList(robots.size());
                 for (Robot a : (List<Robot>) robots) {
                     int counterCounter = a.getCounter();
@@ -42,6 +54,7 @@ public class Basic_Machine extends Actor
                 } else {
                    counter ++;
                 }
-           }
+            }
+          
     }    
 }
