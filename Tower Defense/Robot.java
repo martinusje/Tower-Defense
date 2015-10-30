@@ -14,6 +14,7 @@ public class Robot extends SmoothMover
     int counter = 0;
     int counterCounter = 0;
     int life = 10;
+    int speed = 4;
     public int getCounter() 
     {
         return counterCounter;
@@ -32,14 +33,14 @@ public class Robot extends SmoothMover
             Color Black = new Color(0,0,0,255);    
             if(getWorld().getColorAt(getX()+1, getY()).getRed() < 1 && getWorld().getColorAt(getX()+1, getY()).getGreen() < 1 && getWorld().getColorAt(getX()+1, getY()).getBlue() < 1 && x !=-1)      
             {      
-                setLocation(getX() + 1,getY()); 
+                setLocation(getX() + speed,getY()); 
                 setRotation(90);
                 y = 0;
                 x = 1;
             }      
             else if(getWorld().getColorAt(getX()-1, getY()).getRed() < 1 && getWorld().getColorAt(getX()-1, getY()).getGreen() < 1 && getWorld().getColorAt(getX()-1, getY()).getBlue() < 1&& x !=1)      
             {      
-                setLocation(getX()-1, getY());  
+                setLocation(getX() - speed, getY());  
                 setRotation(270);            
                 y = 0;
                 x = -1;
@@ -47,20 +48,23 @@ public class Robot extends SmoothMover
 
             else if(getWorld().getColorAt(getX(), getY()+1).getRed() < 1 && getWorld().getColorAt(getX(), getY()+1).getGreen() < 1 && getWorld().getColorAt(getX(), getY()+1).getBlue() < 1 && y != -1)      
             {      
-                setLocation(getX(), getY()+1);    
+                setLocation(getX(), getY() + speed);    
                 setRotation(180);            
                 x = 0;
                 y = 1;
             }
             else if(getWorld().getColorAt(getX(), getY()-1).getRed() < 1 && getWorld().getColorAt(getX(), getY()-1).getGreen() < 1 && getWorld().getColorAt(getX(), getY()-1).getBlue() < 1 && y !=1)      
             {      
-                setLocation(getX(), getY()-1);   
+                setLocation(getX(), getY() - speed);   
                 setRotation(0);            
                 x = 0;
                 y = -1;
             }
+            if(getWorld().getColorAt(getX(), getY()).getRed() < 1 && getWorld().getColorAt(getX(), getY()).getGreen() < 1 && getWorld().getColorAt(getX(), getY()).getBlue() < 1)            
+            {}
             else {
                 getWorld().removeObject(this);
+                return;
             }
             counterCounter ++;
             counter = 0;
@@ -71,7 +75,9 @@ public class Robot extends SmoothMover
             getWorld().removeObjects(getIntersectingObjects(Bullet.class));
             life --;
             if(life <= 0) {
+                ((Coins)getWorld().getObjects(Coins.class).get(0)).imageUp();
                 getWorld().removeObject(this);
+                return;
             }
         } 
     } 

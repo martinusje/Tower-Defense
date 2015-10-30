@@ -30,10 +30,14 @@ public class TowerDefenseWorld extends World
         } 
         
         addObject (new Level_1(),0,0);
-        addObject (new Text("Lives:"),30,720);
+        addObject (new Text("Lives:"),30,680);
+        addObject (new Lives("40"),80,680);  
         addObject (new Text("Wave:"),30,700);
-        addObject (new Text("Coins:"),30,680);      
+        addObject (new Wave("30"),80,700);  
+        addObject (new Text("Coins:"),30,720);  
+        addObject (new Coins("20"),80,720);  
         addObject (new Basic_Machine(),704,64);
+        addObject (new Basic_Machine(),704,64);        
 
         setPaintOrder(Robot.class);
     }

@@ -19,6 +19,4 @@ public class Text extends Actor
     {
         setImage(new GreenfootImage(text, 26, Color.black, new Color(0, 0, 0, 0)));
     }
-    
-    
 }

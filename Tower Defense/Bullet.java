@@ -12,9 +12,9 @@ public class Bullet extends SmoothMover
     int counter = 0;
     
     public Bullet(int dir, int X, int Y) { 
-        direction = dir; 
+        direction = dir;
         setRotation(dir);
-        speed = 1; 
+        speed = 3;
         robotX = X;
         robotY = Y;
     } 

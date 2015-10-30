@@ -24,5 +24,6 @@ public class Level_1 extends Actor
         } else {
             counter++;
         }
+        ((Lives)getWorld().getObjects(Lives.class).get(0)).imageUp();
     }    
 }
