@@ -18,9 +18,7 @@ public class Level_1 extends Actor
                 getWorld().addObject(new Robot(),80,640);
                 robotCounter++;
             } 
-            
             counter = 0;
-            
         } else {
             counter++;
         }
