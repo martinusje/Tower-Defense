@@ -10,7 +10,7 @@ import java.awt.Color;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class FW_Machine extends Actor
+public class Area_Machine extends Actor
 {
     int counter = 0, robotX, robotY, active = 0;
     
@@ -36,7 +36,7 @@ public class FW_Machine extends Actor
     }
     public void act() 
     {
-        List<Robot> robots = getWorld().getObjects(Robot.class);
+            List<Robot> robots = getWorld().getObjects(Robot.class);
             if(robots.size() >= 1) {
                 ArrayList counterArray = new ArrayList(robots.size());
                     for (Robot a : (List<Robot>) robots) {
@@ -59,7 +59,7 @@ public class FW_Machine extends Actor
                 Actor robotInRange = robotsInRange.get(counterArrayInRange.indexOf(Collections.max(counterArrayInRange)));
                 turnTowards(robotInRange.getX(), robotInRange.getY());
                 if(counter == 10) {
-                   getWorld().addObject(new Weak_Bullet(getRotation(), robotInRange.getX(), robotInRange.getY()), getX(), getY());
+                   getWorld().addObject(new Explosive_Bullet(getRotation(), robotInRange.getX(), robotInRange.getY()), getX(), getY());
                    counter = 0;
                 } else {
                    counter ++;

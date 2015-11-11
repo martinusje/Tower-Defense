@@ -42,8 +42,11 @@ public class TowerDefenseWorld extends World
         
         addObject (new Basic_Machine(),704,64);
         addObject (new Basic_Machine(),704,64);        
-        addObject (new FW_Machine(),704,128);
-        addObject (new FW_Machine(),704,128);
+        addObject (new FW_Machine(),704,192);
+        addObject (new FW_Machine(),704,192);
+        addObject (new Area_Machine(),704,320);
+        addObject (new Area_Machine(),704,320);
+        
         setPaintOrder(Robot.class);
     }
     
