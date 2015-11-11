@@ -80,6 +80,24 @@ public class Robot extends SmoothMover
                 return;
             }
         } 
+         if(isTouching(Weak_Bullet.class)) {
+            getWorld().removeObjects(getIntersectingObjects(Bullet.class));
+            life --;
+            if(life <= 0) {
+                ((Coins)getWorld().getObjects(Coins.class).get(0)).imageUp();
+                getWorld().removeObject(this);
+                return;
+            }
+        } 
+         if(isTouching(Explosive_Bullet.class)) {
+            getWorld().removeObjects(getIntersectingObjects(Bullet.class));
+            life --;
+            if(life <= 0) {
+                ((Coins)getWorld().getObjects(Coins.class).get(0)).imageUp();
+                getWorld().removeObject(this);
+                return;
+            }
+        } 
     } 
     
     
