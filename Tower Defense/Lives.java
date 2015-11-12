@@ -25,7 +25,7 @@ public class Lives extends Actor
     public void imageUp()
     {
         int score = Integer.parseInt(scoreString);
-        score++;
+        score--;
         setImage(new GreenfootImage(Integer.toString(score), 26, Color.black, new Color(0, 0, 0, 0)));
         scoreString = Integer.toString(score);
     }

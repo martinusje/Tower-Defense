@@ -21,7 +21,7 @@ public class Robot extends SmoothMover
     }
     public void lifeDown()
     {
-        
+        life--;
     } 
     /**
      * Act - do whatever the Robot wants to do. This method is called whenever
@@ -63,6 +63,7 @@ public class Robot extends SmoothMover
             if(getWorld().getColorAt(getX(), getY()).getRed() < 1 && getWorld().getColorAt(getX(), getY()).getGreen() < 1 && getWorld().getColorAt(getX(), getY()).getBlue() < 1)            
             {}
             else {
+                ((Lives)getWorld().getObjects(Lives.class).get(0)).imageUp();
                 getWorld().removeObject(this);
                 return;
             }
@@ -98,6 +99,11 @@ public class Robot extends SmoothMover
                 return;
             }
         } 
+        if(life == 0 || life < 0) {
+            ((Coins)getWorld().getObjects(Coins.class).get(0)).imageUp();
+            getWorld().removeObject(this);
+            return;
+        }   
     } 
     
     
