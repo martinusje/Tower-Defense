@@ -9,12 +9,7 @@ import java.awt.Color;
  */
 public class Robot extends SmoothMover
 {
-    int x = 0;
-    int y = 0;
-    int counter = 0;
-    int counterCounter = 0;
-    int life = 10;
-    int speed = 4;
+    int x = 0, y = 0, counter = 0, counterCounter = 0, life = 10, speed = 4, speedCounterTrigger = 0, speedCounter = 0, stepCounter = 0;
     public int getCounter() 
     {
         return counterCounter;
@@ -23,6 +18,11 @@ public class Robot extends SmoothMover
     {
         life--;
     } 
+    public void speedDown() 
+    {
+        speed = 2;
+        speedCounterTrigger = 1;
+    }
     /**
      * Act - do whatever the Robot wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -64,11 +64,13 @@ public class Robot extends SmoothMover
             {}
             else {
                 ((Lives)getWorld().getObjects(Lives.class).get(0)).imageUp();
+                System.out.println(stepCounter);
                 getWorld().removeObject(this);
                 return;
             }
             counterCounter ++;
             counter = 0;
+            stepCounter = stepCounter + speed;
         } else {
             counter++;
         }
@@ -82,16 +84,7 @@ public class Robot extends SmoothMover
             }
         } 
          if(isTouching(Weak_Bullet.class)) {
-            getWorld().removeObjects(getIntersectingObjects(Bullet.class));
-            life --;
-            if(life <= 0) {
-                ((Coins)getWorld().getObjects(Coins.class).get(0)).imageUp();
-                getWorld().removeObject(this);
-                return;
-            }
-        } 
-         if(isTouching(Explosive_Bullet.class)) {
-            getWorld().removeObjects(getIntersectingObjects(Bullet.class));
+            getWorld().removeObjects(getIntersectingObjects(Weak_Bullet.class));
             life --;
             if(life <= 0) {
                 ((Coins)getWorld().getObjects(Coins.class).get(0)).imageUp();
@@ -104,7 +97,13 @@ public class Robot extends SmoothMover
             getWorld().removeObject(this);
             return;
         }   
+        if(speedCounterTrigger == 1) {
+            speedCounter++;
+            if(speedCounter >= 100 && speed == 2 && Math.round(stepCounter/4) == stepCounter/4) {
+                speed = 4;
+                speedCounterTrigger = 0;
+                speedCounter = 0;
+            }
+        }
     } 
-    
-    
 }

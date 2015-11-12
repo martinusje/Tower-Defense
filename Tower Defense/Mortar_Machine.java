@@ -10,7 +10,7 @@ import java.awt.Color;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Area_Machine extends Actor
+public class Mortar_Machine extends Actor
 {
     int counter = 0, robotX, robotY, active = 0;
     
@@ -58,7 +58,7 @@ public class Area_Machine extends Actor
                 
                 Actor robotInRange = robotsInRange.get(counterArrayInRange.indexOf(Collections.max(counterArrayInRange)));
                 turnTowards(robotInRange.getX(), robotInRange.getY());
-                if(counter == 10) {
+                if(counter == 40) {
                    getWorld().addObject(new Explosive_Bullet(getRotation(), robotInRange.getX(), robotInRange.getY()), getX(), getY());
                    counter = 0;
                 } else {

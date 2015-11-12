@@ -13,7 +13,7 @@ public class Level_1 extends Actor
     
     public void act() 
     {
-        if (counter == 80) {
+        if (counter == 40) {
             if (robotCounter < 10) {
                 getWorld().addObject(new Robot(),80,640);
                 robotCounter++;

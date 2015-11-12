@@ -5,6 +5,7 @@ public class Explosive_Bullet extends SmoothMover
 {
     private int direction, speed, robotX, robotY;
     int counter = 0;
+    int explosionCounter = 0;
     
     public Explosive_Bullet(int dir, int X, int Y) { 
         direction = dir;
@@ -24,10 +25,15 @@ public class Explosive_Bullet extends SmoothMover
         move(speed);
         if(getX() >= 640 || getX() == 0 || getY() >= 640 || getY() == 0) {
             getWorld().removeObject(this);
+            return;
         }
         if (isTouching(Robot.class)) {
-            getObjectsInRange(100,Robot.class);
-            
+            for (Robot a : (List<Robot>) getObjectsInRange(96,Robot.class)) {
+                a.lifeDown();
+                a.lifeDown();
+            }
+            getWorld().addObject(new Explosion(), getX(), getY());
+            explosionCounter = 0;
             getWorld().removeObject(this);
         }
     }    
