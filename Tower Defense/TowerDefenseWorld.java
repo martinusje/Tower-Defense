@@ -29,27 +29,23 @@ public class TowerDefenseWorld extends World
             getBackground().drawRect(640, i*128,  128, 128);
         } 
         
-        addObject (new Level_1(),0,0);
+        addObject(new Level_1(),0,0);
         
-        addObject (new Text("Lives:"),30,680);
-        addObject (new Lives("40"),80,680);  
+        addObject(new Text("Lives:"),30,680);
+        addObject(new Lives("10"),80,680);  
         
-        addObject (new Text("Wave:"),30,700);
-        addObject (new Wave("30"),80,700);  
+        addObject(new Text("Wave:"),30,700);
+        addObject(new Wave("0"),80,700);  
         
-        addObject (new Text("Coins:"),30,720);  
-        addObject (new Coins("20"),80,720);  
+        addObject(new Text("Coins:"),30,720);  
+        addObject(new Coins("0"),80,720);  
         
-        addObject (new Basic_Machine(),704,64);
-        addObject (new Basic_Machine(),704,64);        
-        addObject (new FW_Machine(),704,192);
-        addObject (new FW_Machine(),704,192);
-        addObject (new Mortar_Machine(),704,320);
-        addObject (new Mortar_Machine(),704,320);
-        addObject (new EMP_Machine(),704,448);
-        addObject (new EMP_Machine(),704,448);
-        addObject (new Sniper_Machine(),704,576);
-        addObject (new Sniper_Machine(),704,576);
+        int Ylocation = 64;
+        for(int i = 1; i <= 5; i++) {
+            addObject(new Machine(i), 704, Ylocation);
+            addObject(new Machine(i), 704, Ylocation);
+            Ylocation = Ylocation + 128;
+        }
         
         setPaintOrder(Robot.class);
     }

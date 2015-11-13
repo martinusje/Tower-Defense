@@ -38,13 +38,9 @@ public class Robot extends SmoothMover
         }
         speedCounterTrigger = 1;
     }
-    /**
-     * Act - do whatever the Robot wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     public void act() 
     {
-        if (counter == 2) {
+        if(counter == 2) {
             Color Black = new Color(0,0,0,255);    
             if(getWorld().getColorAt(getX()+1, getY()).getRed() < 1 && getWorld().getColorAt(getX()+1, getY()).getGreen() < 1 && getWorld().getColorAt(getX()+1, getY()).getBlue() < 1 && x !=-1)      
             {      
@@ -93,20 +89,19 @@ public class Robot extends SmoothMover
             Bullet theBullet = (Bullet)getOneIntersectingObject(Bullet.class);
             type = theBullet.getType();
 
-            if (type == 1) {
+            if(type == 1) {
                 life = life - 2;
             }
-            if (type == 2) {
+            if(type == 2) {
                 life --;
             }
-            if (type == 3) {
+            if(type == 3) {
                 
             }
-            if (type == 4) {
+            if(type == 4) {
                 life = life - 5;
             }
             getWorld().removeObjects(getIntersectingObjects(Bullet.class));
-            
             if(life <= 0) {
                 ((Coins)getWorld().getObjects(Coins.class).get(0)).imageUp();
                 getWorld().removeObject(this);
