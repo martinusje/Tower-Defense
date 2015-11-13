@@ -9,7 +9,20 @@ import java.awt.Color;
  */
 public class Robot extends SmoothMover
 {
-    int x = 0, y = 0, counter = 0, counterCounter = 0, life = 10, speed = 4, speedCounterTrigger = 0, speedCounter = 0, stepCounter = 0;
+    int x = 0, y = 0, counter = 0, counterCounter = 0, life = 10, speed = 4, speedCounterTrigger = 0, speedCounter = 0, type; 
+    double stepCounter = 0;
+    public Robot(int robotType) { 
+        if(robotType == 1) {
+            speed = 4;
+            life = 10;
+            setImage("Basic_Robot.png");
+        }
+        if(robotType == 2) {
+            speed = 2;
+            life = 20;
+            setImage("Basic_Robot_Slow.png");
+        }
+    }
     public int getCounter() 
     {
         return counterCounter;
@@ -20,7 +33,9 @@ public class Robot extends SmoothMover
     } 
     public void speedDown() 
     {
-        speed = 2;
+        if(speedCounterTrigger == 0) {
+            speed = speed/2;
+        }
         speedCounterTrigger = 1;
     }
     /**
@@ -75,24 +90,30 @@ public class Robot extends SmoothMover
             counter++;
         }
         if(isTouching(Bullet.class)) {
+            Bullet theBullet = (Bullet)getOneIntersectingObject(Bullet.class);
+            type = theBullet.getType();
+
+            if (type == 1) {
+                life = life - 2;
+            }
+            if (type == 2) {
+                life --;
+            }
+            if (type == 3) {
+                
+            }
+            if (type == 4) {
+                life = life - 5;
+            }
             getWorld().removeObjects(getIntersectingObjects(Bullet.class));
-            life --;
+            
             if(life <= 0) {
                 ((Coins)getWorld().getObjects(Coins.class).get(0)).imageUp();
                 getWorld().removeObject(this);
                 return;
             }
         } 
-         if(isTouching(Weak_Bullet.class)) {
-            getWorld().removeObjects(getIntersectingObjects(Weak_Bullet.class));
-            life --;
-            if(life <= 0) {
-                ((Coins)getWorld().getObjects(Coins.class).get(0)).imageUp();
-                getWorld().removeObject(this);
-                return;
-            }
-        } 
-        if(life == 0 || life < 0) {
+        if(life <= 0) {
             ((Coins)getWorld().getObjects(Coins.class).get(0)).imageUp();
             getWorld().removeObject(this);
             return;

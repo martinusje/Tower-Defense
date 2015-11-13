@@ -35,19 +35,7 @@ public class Basic_Machine extends Actor
         return mouseY;
     }
     public void act() 
-    {
-            List<Robot> robots = getWorld().getObjects(Robot.class);
-            if(robots.size() >= 1) {
-                ArrayList counterArray = new ArrayList(robots.size());
-                    for (Robot a : (List<Robot>) robots) {
-                        int counterCounter = a.getCounter();
-                        counterArray.add(counterCounter);
-                    }
-                Actor robot = robots.get(counterArray.indexOf(Collections.max(counterArray)));
-                robotX = robot.getX();
-                robotY = robot.getY();
-            }
-               
+    {              
             List<Robot> robotsInRange = getObjectsInRange(200, Robot.class);
             if(robotsInRange.size() != 0 && active == 1) {
                 ArrayList counterArrayInRange = new ArrayList(robotsInRange.size());
@@ -57,13 +45,18 @@ public class Basic_Machine extends Actor
                 }
                 
                 Actor robotInRange = robotsInRange.get(counterArrayInRange.indexOf(Collections.max(counterArrayInRange)));
+                robotX = robotInRange.getX();
+                robotY = robotInRange.getY();
+                
                 turnTowards(robotInRange.getX(), robotInRange.getY());
-                if(counter == 20) {
-                   getWorld().addObject(new Bullet(getRotation(), robotInRange.getX(), robotInRange.getY()), getX(), getY());
+                if(counter == 40) {
+                   getWorld().addObject(new Bullet(getRotation(), robotInRange.getX(), robotInRange.getY(), robotInRange, 1), getX(), getY());
                    counter = 0;
                 } else {
                    counter ++;
                 }
+            } else {
+                counter = 20;
             }
             
             if(Greenfoot.mouseDragged(this) && active == 0 ) {
