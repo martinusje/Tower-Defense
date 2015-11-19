@@ -88,7 +88,7 @@ public class Robot extends SmoothMover
         if(isTouching(Bullet.class)) {
             Bullet theBullet = (Bullet)getOneIntersectingObject(Bullet.class);
             type = theBullet.getType();
-
+            
             if(type == 1) {
                 life = life - 2;
             }
@@ -101,7 +101,9 @@ public class Robot extends SmoothMover
             if(type == 4) {
                 life = life - 5;
             }
-            getWorld().removeObjects(getIntersectingObjects(Bullet.class));
+            if(type != 3) {
+                getWorld().removeObjects(getIntersectingObjects(Bullet.class));
+            }
             if(life <= 0) {
                 ((Coins)getWorld().getObjects(Coins.class).get(0)).imageUp();
                 getWorld().removeObject(this);

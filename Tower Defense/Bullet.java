@@ -25,6 +25,7 @@ public class Bullet extends SmoothMover
             speed = 15;
         }
         setRotation(dir);
+        direction = dir;
         robotX = X;
         robotY = Y;
         this.theOwner = theOwner;
@@ -33,16 +34,8 @@ public class Bullet extends SmoothMover
         return type;
     }
     public void act() {
-        if(theOwner.getX() == getX() && theOwner.getY() == getY() && counter == 0) {
-            setRotation(getRotation());
-            counter++;
-        }
-        if(counter == 0) {
-            if (type != 4) {
-                turnTowards(robotX, robotY);
-            } else {
-                turnTowards(theOwner.getX(), theOwner.getY());
-            }
+        if(counter == 0 && theOwner.getWorld() != null && type == 4) {
+            turnTowards(theOwner.getX(), theOwner.getY());
         }        
         if(getX() >= 640 || getX() == 0 || getY() >= 640 || getY() == 0) {
             getWorld().removeObject(this);

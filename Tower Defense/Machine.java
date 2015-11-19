@@ -41,7 +41,7 @@ public class Machine extends Actor
         }
         if(type == 5) {
             range = 300;
-            shootingRate = 200;
+            shootingRate = 125;
             bulletType = 4;
             setImage("Arrow(yellow).png");
         }
