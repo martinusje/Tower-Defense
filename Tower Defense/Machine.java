@@ -112,21 +112,7 @@ public class Machine extends Actor
         }
         
         if(Greenfoot.mouseClicked(this) && getWorld().getColorAt(getMouseX()+1, getMouseY()).getRed() != 0) {
-            if(type == 1) {
-                getWorld().addObject(new Machine(type), 704, 64);
-            }
-            if(type == 2) {
-                getWorld().addObject(new Machine(type), 704, 192);
-            }
-            if(type == 3) {
-                getWorld().addObject(new Machine(type), 704, 320);
-            }
-            if(type == 4) {
-                getWorld().addObject(new Machine(type), 704, 448);
-            }
-            if(type == 5) {
-                getWorld().addObject(new Machine(type), 704, 576);
-            }
+            getWorld().addObject(new Machine(type), 704, 64+((type-1)*128));
             if(getWorld().getColorAt(getMouseX(), getMouseY()).getRed() < 1 && getWorld().getColorAt(getMouseX(), getMouseY()).getGreen() < 1 && getWorld().getColorAt(getMouseX(), getMouseY()).getBlue() < 1 || getMouseX() >= 640 || getMouseY() >= 640) {
                 getWorld().removeObject(this);
             } else {
