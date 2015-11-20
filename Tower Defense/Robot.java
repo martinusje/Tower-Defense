@@ -75,7 +75,6 @@ public class Robot extends SmoothMover
             {}
             else {
                 ((Lives)getWorld().getObjects(Lives.class).get(0)).imageUp();
-                System.out.println(stepCounter);
                 getWorld().removeObject(this);
                 return;
             }

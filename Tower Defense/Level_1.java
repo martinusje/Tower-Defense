@@ -20,6 +20,11 @@ public class Level_1 extends Actor
             if(robotCounter >= 10 && robotCounter < 20) {
                 getWorld().addObject(new Robot(2),80,640);
                 robotCounter++;
+                
+            }
+            if(robotCounter == 20) {
+                robotCounter++;
+                ((Wave)getWorld().getObjects(Wave.class).get(0)).imageUp();
             }
             counter = 0;
         } else {

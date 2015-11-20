@@ -10,11 +10,11 @@ import java.awt.Color;
 
 public class Lives extends Actor
 {
-    public String scoreString;
+    public String livesString;
     public Lives(String text)
     {
         updateImage(text);
-        scoreString = text;
+        livesString = text;
     }
  
     public void updateImage(String text)
@@ -24,9 +24,13 @@ public class Lives extends Actor
     
     public void imageUp()
     {
-        int score = Integer.parseInt(scoreString);
-        score--;
-        setImage(new GreenfootImage(Integer.toString(score), 26, Color.black, new Color(0, 0, 0, 0)));
-        scoreString = Integer.toString(score);
+        int lives = Integer.parseInt(livesString);
+        lives--;
+        setImage(new GreenfootImage(Integer.toString(lives), 26, Color.black, new Color(0, 0, 0, 0)));
+        livesString = Integer.toString(lives);
+        if(lives <= 0) {
+            System.out.println("You lose suckaahhh!");
+            Greenfoot.stop();
+        }
     }
 }

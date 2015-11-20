@@ -35,7 +35,7 @@ public class TowerDefenseWorld extends World
         addObject(new Lives("10"),80,680);  
         
         addObject(new Text("Wave:"),30,700);
-        addObject(new Wave("0"),80,700);  
+        addObject(new Wave("1"),80,700);  
         
         addObject(new Text("Coins:"),30,720);  
         addObject(new Coins("0"),80,720);  

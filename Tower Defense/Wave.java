@@ -10,11 +10,11 @@ import java.awt.Color;
 
 public class Wave extends Actor
 {
-    public String scoreString;
+    public String waveString;
     public Wave(String text)
     {
         updateImage(text);
-        scoreString = text;
+        waveString = text;
     }
  
     public void updateImage(String text)
@@ -24,9 +24,9 @@ public class Wave extends Actor
     
     public void imageUp()
     {
-        int score = Integer.parseInt(scoreString);
-        score++;
-        setImage(new GreenfootImage(Integer.toString(score), 26, Color.black, new Color(0, 0, 0, 0)));
-        scoreString = Integer.toString(score);
+        int wave = Integer.parseInt(waveString);
+        wave++;
+        setImage(new GreenfootImage(Integer.toString(wave), 26, Color.black, new Color(0, 0, 0, 0)));
+        waveString = Integer.toString(wave);
     }
 }

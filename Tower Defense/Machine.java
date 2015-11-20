@@ -13,7 +13,7 @@ import java.awt.Color;
 public class Machine extends Actor
 {
     int counter = 0, robotX, robotY, active = 0, type, range, shootingRate, bulletType, EMPCounter;
-    
+
     public Machine(int type) {
         this.type = type;
         if(type == 1) {
@@ -46,50 +46,54 @@ public class Machine extends Actor
             setImage("Arrow(yellow).png");
         }
     }
+
     public int returnRobotX()
     {
         return robotX;
     }
+
     public int returnRobotY()
     {
         return robotY;
     }
+
     public int getMouseX() {
         MouseInfo mouse = Greenfoot.getMouseInfo();
         int mouseX = mouse.getX();
         mouseX = 32 * Math.round(mouseX/32) + 16;
         return mouseX;
     }
+
     public int getMouseY() {
         MouseInfo mouse = Greenfoot.getMouseInfo();
         int mouseY = mouse.getY();
         mouseY = 32 * Math.round(mouseY/32) + 16;
         return mouseY;
     }
-    public void act() 
-    {              
+    
+    public void pointAndShoot() {
         List<Robot> robotsInRange = getObjectsInRange(range, Robot.class);
-        if(robotsInRange.size() != 0 && active == 1) {
+        if(robotsInRange.size() != 0) {
             if(type != 4) {
                 ArrayList counterArrayInRange = new ArrayList(robotsInRange.size());
                 for(Robot a : (List<Robot>) robotsInRange) {
                     int counterCounter = a.getCounter();
                     counterArrayInRange.add(counterCounter);
                 }
-                
+
                 Actor robotInRange = robotsInRange.get(counterArrayInRange.indexOf(Collections.max(counterArrayInRange)));
                 robotX = robotInRange.getX();
                 robotY = robotInRange.getY();
-                
+
                 turnTowards(robotInRange.getX(), robotInRange.getY());
                 if(counter == shootingRate) {
-                   getWorld().addObject(new Bullet(getRotation(), robotInRange.getX(), robotInRange.getY(), robotInRange, bulletType), getX(), getY());
-                   counter = 0;
+                    getWorld().addObject(new Bullet(getRotation(), robotInRange.getX(), robotInRange.getY(), robotInRange, bulletType), getX(), getY());
+                    counter = 0;
                 } else {
-                   counter ++;
+                    counter ++;
                 }
             } else {
-                
+
                 if(EMPCounter == 125) {
                     for (Robot a : (List<Robot>) robotsInRange) {
                         a.speedDown();
@@ -104,20 +108,38 @@ public class Machine extends Actor
             counter = shootingRate;
             EMPCounter = 125;
         }
-        
-        if(Greenfoot.mouseDragged(this) && active == 0 ) {
+    }
+    
+    public void dragAndSetMachine() {
+        if(Greenfoot.mouseDragged(this)) {
             counter = 0;
             this.setLocation(getMouseX(), getMouseY());
-            //getWorld().addObject(new Basic_Machine(), 704, 64);
+        }
+
+        if(Greenfoot.mouseClicked(null)) {
+            getWorld().addObject(new Machine(type), 704, 64+((type-1)*128));
+            if(getMouseX() >= 640 || getMouseY() >= 640 || getIntersectingObjects(Machine.class).size() > 0) {
+                getWorld().removeObject(this);
+                return;
+            } else {
+                if(getWorld().getColorAt(getMouseX(), getMouseY()).getRed() < 1 && getWorld().getColorAt(getMouseX(), getMouseY()).getGreen() < 1 && getWorld().getColorAt(getMouseX(), getMouseY()).getBlue() < 1) {
+                    getWorld().removeObject(this);
+                    return;
+                } else {
+                    active = 1;
+                }
+            }
+        }
+    }
+
+    public void act() 
+    {              
+        if(active == 1) {
+            pointAndShoot();
         }
         
-        if(Greenfoot.mouseClicked(this) && getWorld().getColorAt(getMouseX()+1, getMouseY()).getRed() != 0) {
-            getWorld().addObject(new Machine(type), 704, 64+((type-1)*128));
-            if(getWorld().getColorAt(getMouseX(), getMouseY()).getRed() < 1 && getWorld().getColorAt(getMouseX(), getMouseY()).getGreen() < 1 && getWorld().getColorAt(getMouseX(), getMouseY()).getBlue() < 1 || getMouseX() >= 640 || getMouseY() >= 640) {
-                getWorld().removeObject(this);
-            } else {
-                active = 1;
-            }
+        if(active == 0) {
+            dragAndSetMachine();
         }
     }    
 }
