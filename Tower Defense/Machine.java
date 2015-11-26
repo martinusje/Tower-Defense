@@ -12,7 +12,7 @@ import java.awt.Color;
  */
 public class Machine extends Actor
 {
-    int counter = 0, robotX, robotY, active = 0, type, range, shootingRate, bulletType, EMPCounter;
+    int counter = 0, robotX, robotY, active = 0, type, range, shootingRate, bulletType, EMPCounter, cost;
 
     public Machine(int type) {
         this.type = type;
@@ -21,29 +21,34 @@ public class Machine extends Actor
             shootingRate = 40;
             bulletType = 1;
             setImage("Arrow.png");
+            cost = 5;
         }
         if(type == 2) {
             range = 100;
             shootingRate = 20;
             bulletType = 2;
             setImage("Arrow(red).png");
+            cost = 5;
         }
         if(type == 3) {
             range = 100;
             shootingRate = 40;
             bulletType = 3;
             setImage("Arrow(pink).png");
+            cost = 10;
         }
         if(type == 4) {
             range = 80;
             shootingRate = 125;
             setImage("Arrow(green).png");
+            cost = 5;
         }
         if(type == 5) {
             range = 300;
             shootingRate = 125;
             bulletType = 4;
             setImage("Arrow(yellow).png");
+            cost = 10;
         }
     }
 
@@ -55,6 +60,11 @@ public class Machine extends Actor
     public int returnRobotY()
     {
         return robotY;
+    }
+    
+    public int getCost()
+    {
+        return cost;
     }
 
     public int getMouseX() {
@@ -111,7 +121,7 @@ public class Machine extends Actor
     }
     
     public void dragAndSetMachine() {
-        if(Greenfoot.mouseDragged(this)) {
+        if(Greenfoot.mouseDragged(this) && (((Coins)getWorld().getObjects(Coins.class).get(0)).getCoins()-cost) >= 0) {
             counter = 0;
             this.setLocation(getMouseX(), getMouseY());
         }
@@ -126,7 +136,13 @@ public class Machine extends Actor
                     getWorld().removeObject(this);
                     return;
                 } else {
-                    active = 1;
+                    if((((Coins)getWorld().getObjects(Coins.class).get(0)).getCoins()-cost) >= 0){
+                        active = 1;
+                        ((Coins)getWorld().getObjects(Coins.class).get(0)).coinsDown(cost);
+                    } else {
+                        getWorld().removeObject(this);
+                        return;
+                    }
                 }
             }
         }
@@ -137,7 +153,6 @@ public class Machine extends Actor
         if(active == 1) {
             pointAndShoot();
         }
-        
         if(active == 0) {
             dragAndSetMachine();
         }

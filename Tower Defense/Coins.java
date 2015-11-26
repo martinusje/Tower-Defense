@@ -10,23 +10,37 @@ import java.awt.Color;
 
 public class Coins extends Actor
 {
-    public String scoreString;
-    public Coins(String text)
+    public String coinString;
+    public int coins;
+    public Coins(String coin)
     {
-        updateImage(text);
-        scoreString = text;
+        updateImage(coin);
+        coinString = coin;
+        coins = Integer.parseInt(coinString);
     }
  
-    public void updateImage(String text)
+    public void updateImage(String coins)
     {
-        setImage(new GreenfootImage(text, 26, Color.black, new Color(0, 0, 0, 0)));
+        setImage(new GreenfootImage(coins, 26, Color.black, new Color(0, 0, 0, 0)));
     }
     
-    public void imageUp()
+    public int getCoins() {
+        return coins;
+    }
+    
+    public void coinsUp(int killBonus) 
     {
-        int score = Integer.parseInt(scoreString);
-        score++;
-        setImage(new GreenfootImage(Integer.toString(score), 26, Color.black, new Color(0, 0, 0, 0)));
-        scoreString = Integer.toString(score);
+        coins = Integer.parseInt(coinString);
+        coins = coins + killBonus;
+        setImage(new GreenfootImage(Integer.toString(coins), 26, Color.black, new Color(0, 0, 0, 0)));
+        coinString = Integer.toString(coins);
+    }
+    
+    public void coinsDown(int cost)
+    {
+        coins = Integer.parseInt(coinString);
+        coins = coins - cost;
+        setImage(new GreenfootImage(Integer.toString(coins), 26, Color.black, new Color(0, 0, 0, 0)));
+        coinString = Integer.toString(coins);
     }
 }

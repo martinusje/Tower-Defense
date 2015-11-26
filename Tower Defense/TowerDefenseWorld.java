@@ -38,12 +38,13 @@ public class TowerDefenseWorld extends World
         addObject(new Wave("1"),80,700);  
         
         addObject(new Text("Coins:"),30,720);  
-        addObject(new Coins("0"),80,720);  
+        addObject(new Coins("20"),80,720);  
         
         int Ylocation = 64;
         for(int i = 1; i <= 5; i++) {
             addObject(new Machine(i), 704, Ylocation);
             addObject(new Machine(i), 704, Ylocation);
+            addObject(new Text("cost:" + ((Machine)getObjects(Machine.class).get((i*2)-1)).getCost()),704,Ylocation + 28);  
             Ylocation = Ylocation + 128;
         }
         

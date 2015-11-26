@@ -30,26 +30,44 @@ public class Bullet extends SmoothMover
         robotY = Y;
         this.theOwner = theOwner;
     } 
+    
     public int getType() {
         return type;
     }
+    
+    public void ifFollowingBullet()
+    {
+        turnTowards(theOwner.getX(), theOwner.getY());
+        return;
+    }
+    
+    public void ifNotExplosiveNorFollowingBullet()
+    {
+        getWorld().removeObject(this);
+        return;
+    }
+    
+    public void ifExplosiveBullet() 
+    {
+        for (Robot a : (List<Robot>) getObjectsInRange(96,Robot.class)) {
+            a.lifeDown();
+            a.lifeDown();
+        }
+        getWorld().addObject(new Explosion(), getX(), getY());
+        explosionCounter = 0;
+        getWorld().removeObject(this);
+        return;
+    }
+    
     public void act() {
         if(counter == 0 && theOwner.getWorld() != null && type == 4) {
-            turnTowards(theOwner.getX(), theOwner.getY());
+            ifFollowingBullet();
         }        
         if(getX() >= 640 || getX() == 0 || getY() >= 640 || getY() == 0) {
-            getWorld().removeObject(this);
-            return;
+            ifNotExplosiveNorFollowingBullet();
         }
         if(isTouching(Robot.class) && type == 3) {
-            for (Robot a : (List<Robot>) getObjectsInRange(96,Robot.class)) {
-                a.lifeDown();
-                a.lifeDown();
-            }
-            getWorld().addObject(new Explosion(), getX(), getY());
-            explosionCounter = 0;
-            getWorld().removeObject(this);
-            return;
+            ifExplosiveBullet();
         }
         move(speed);
     }    
