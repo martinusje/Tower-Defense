@@ -9,18 +9,23 @@ import java.awt.Color;
  */
 public class Robot extends SmoothMover
 {
-    int x = 0, y = 0, counter = 0, counterCounter = 0, life = 10, speed = 4, speedCounterTrigger = 0, speedCounter = 0, type, IWantToDie = 0; 
-    double stepCounter = 0;
-    public Robot(int robotType) { 
+    int x = 0, y = 0, counter = 0, counterCounter = 0, speed = 4, speedCounterTrigger = 0, speedCounter = 0, type, IWantToDie = 0; 
+    double stepCounter = 0, life;
+    public Robot(int robotType, double waveStrength) { 
         if(robotType == 1) {
             speed = 4;
-            life = 10;
+            life = 10 * waveStrength;
             setImage("Basic_Robot.png");
         }
         if(robotType == 2) {
             speed = 2;
-            life = 20;
+            life = 20*waveStrength;
             setImage("Basic_Robot_Slow.png");
+        }
+        if(robotType == 3) {
+            speed = 3;
+            life = 14*waveStrength;
+            setImage("Pink_Robot.png");
         }
     }
     
@@ -104,7 +109,7 @@ public class Robot extends SmoothMover
             
         }
         if(type == 4) {
-            life = life - 5;
+            life = life - 7;
         }
         if(type != 3) {
             getWorld().removeObjects(getIntersectingObjects(Bullet.class));

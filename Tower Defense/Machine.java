@@ -138,6 +138,8 @@ public class Machine extends Actor
                 } else {
                     if((((Coins)getWorld().getObjects(Coins.class).get(0)).getCoins()-cost) >= 0){
                         active = 1;
+                        TowerDefenseWorld myWorld = (TowerDefenseWorld) getWorld();
+                        myWorld.drawBase(1, getMouseX(), getMouseY());
                         ((Coins)getWorld().getObjects(Coins.class).get(0)).coinsDown(cost);
                     } else {
                         getWorld().removeObject(this);

@@ -8,6 +8,10 @@ import greenfoot.*;
  */
 public class Explosion extends SmoothMover
 {
+    public Explosion()
+    {
+        Greenfoot.playSound("boem!.wav");
+    }
     int explosionCounter = 0;
     public void act() 
     {
