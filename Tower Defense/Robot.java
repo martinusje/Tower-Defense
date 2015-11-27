@@ -9,7 +9,7 @@ import java.awt.Color;
  */
 public class Robot extends SmoothMover
 {
-    int x = 0, y = 0, counter = 0, counterCounter = 0, life = 10, speed = 4, speedCounterTrigger = 0, speedCounter = 0, type; 
+    int x = 0, y = 0, counter = 0, counterCounter = 0, life = 10, speed = 4, speedCounterTrigger = 0, speedCounter = 0, type, IWantToDie = 0; 
     double stepCounter = 0;
     public Robot(int robotType) { 
         if(robotType == 1) {
@@ -22,6 +22,11 @@ public class Robot extends SmoothMover
             life = 20;
             setImage("Basic_Robot_Slow.png");
         }
+    }
+    
+    public void removeObjectFuction()
+    {
+        getWorld().removeObject(this);
     }
     
     public int getCounter() 
@@ -78,8 +83,7 @@ public class Robot extends SmoothMover
         {}
         else {
             ((Lives)getWorld().getObjects(Lives.class).get(0)).imageUp();
-            getWorld().removeObject(this);
-            return;
+            IWantToDie = 1;
         }
         counterCounter ++;
         stepCounter = stepCounter + speed;
@@ -109,8 +113,7 @@ public class Robot extends SmoothMover
     
     public void dealingWithDeadness() {
         ((Coins)getWorld().getObjects(Coins.class).get(0)).coinsUp(1);
-        getWorld().removeObject(this);
-        return;
+        IWantToDie = 1;
     }
     
     public void dealingWithSlowness()
@@ -125,6 +128,10 @@ public class Robot extends SmoothMover
     
     public void act() 
     {
+        if(IWantToDie == 1) {
+            getWorld().removeObject(this);
+            return;
+        }
         if(counter == 2) {
             walk();
             counter = 0;
