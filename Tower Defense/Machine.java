@@ -50,6 +50,7 @@ public class Machine extends Actor
             setImage("Arrow(yellow).png");
             cost = 10;
         }
+        counter = shootingRate;
     }
 
     public int returnRobotX()
@@ -103,7 +104,6 @@ public class Machine extends Actor
                     counter ++;
                 }
             } else {
-
                 if(EMPCounter == 125) {
                     for (Robot a : (List<Robot>) robotsInRange) {
                         a.speedDown();
