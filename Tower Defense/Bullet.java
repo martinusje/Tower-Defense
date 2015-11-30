@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class Bullet extends SmoothMover
 {
-    int direction, speed, robotX, robotY, counter = 0, explosionCounter = 0, type;
+    int direction, speed, robotX, robotY, counter = 0, explosionCounter = 0, type, IWantToDie = 0;
     Actor theOwner;
     public Bullet(int dir, int X, int Y, Actor theOwner, int type) { 
         this.type = type;
@@ -43,8 +43,7 @@ public class Bullet extends SmoothMover
     
     public void ifNotExplosiveNorFollowingBullet()
     {
-        getWorld().removeObject(this);
-        return;
+        IWantToDie = 1;
     }
     
     public void ifExplosiveBullet() 
@@ -55,11 +54,14 @@ public class Bullet extends SmoothMover
         }
         getWorld().addObject(new Explosion(), getX(), getY());
         explosionCounter = 0;
-        getWorld().removeObject(this);
-        return;
+        IWantToDie = 1;
     }
     
     public void act() {
+        if(IWantToDie == 1) {
+            getWorld().removeObject(this);
+            return;
+        }
         if(counter == 0 && theOwner.getWorld() != null && type == 4) {
             ifFollowingBullet();
         }        

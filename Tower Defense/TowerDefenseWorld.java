@@ -50,6 +50,9 @@ public class TowerDefenseWorld extends World
         
         setPaintOrder(Robot.class);
     }
+    public void drawBase(int type, int X, int Y) {
+        getBackground().drawImage(new GreenfootImage("Arrow(green).png"), X-16, Y-16);
+    }
     
 
 }

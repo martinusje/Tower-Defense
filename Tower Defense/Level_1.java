@@ -9,6 +9,7 @@ import greenfoot.*;
 public class Level_1 extends Actor
 {
     int counter = 0, robotCounter = 0, waveCounter = 0, i = 0, j = 0, amountOfRobots = 0;
+    double waveStrength;
     
     public void act() 
     {
@@ -17,21 +18,23 @@ public class Level_1 extends Actor
             i = 1;
             j = 2;
             amountOfRobots = 10;
+            waveStrength = 1;
         }
         if (waveCounter == 1)
         {
             i = 2;
             j = 1;
             amountOfRobots = 15;
+            waveStrength = 1.5;
         }
         
         if(counter == 40) {
             if(robotCounter < amountOfRobots) {
-                getWorld().addObject(new Robot(i),80,640);
+                getWorld().addObject(new Robot(i, waveStrength),80,640);
                 robotCounter++;
             } 
             if(robotCounter >= amountOfRobots && robotCounter < amountOfRobots * 2) {
-                getWorld().addObject(new Robot(j),80,640);
+                getWorld().addObject(new Robot(j, waveStrength),80,640);
                 robotCounter++;
             }
             if (robotCounter >= 20)
