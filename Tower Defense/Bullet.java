@@ -20,6 +20,7 @@ public class Bullet extends SmoothMover
         }
         if(type == 3) {
             speed = 10;
+            setImage("Bullet_Strong.png");
         }
         if(type == 4) {
             speed = 15;

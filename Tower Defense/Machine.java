@@ -20,21 +20,21 @@ public class Machine extends Actor
             range = 200;
             shootingRate = 40;
             bulletType = 1;
-            setImage("Arrow.png");
+            setImage("Tower_Base.png");
             cost = 5;
         }
         if(type == 2) {
             range = 100;
             shootingRate = 20;
             bulletType = 2;
-            setImage("Arrow(red).png");
+            setImage("Tower_Fast.png");
             cost = 5;
         }
         if(type == 3) {
             range = 100;
             shootingRate = 40;
             bulletType = 3;
-            setImage("Arrow(pink).png");
+            setImage("Tower_Strong.png");
             cost = 10;
         }
         if(type == 4) {
