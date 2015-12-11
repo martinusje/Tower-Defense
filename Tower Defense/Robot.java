@@ -15,17 +15,17 @@ public class Robot extends SmoothMover
         if(robotType == 1) {
             speed = 4;
             life = 10 * waveStrength;
-            setImage("Basic_Robot.png");
+            setImage("Robot_Basic.png");
         }
         if(robotType == 2) {
             speed = 2;
             life = 20*waveStrength;
-            setImage("Basic_Robot_Slow.png");
+            setImage("Robot_Slow.png");
         }
         if(robotType == 3) {
             speed = 3;
             life = 14*waveStrength;
-            setImage("Pink_Robot.png");
+            setImage("Robot_Strong.png");
         }
     }
     

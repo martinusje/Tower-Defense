@@ -18,7 +18,7 @@ public class TowerDefenseWorld extends World
     {    
         super(768, 768, 1);
 
-        getBackground().drawImage(new GreenfootImage("Background.png"), 0, 0);        
+        getBackground().drawImage(new GreenfootImage("Background_2.png"), 0, 0);        
         getBackground().drawImage(new GreenfootImage("track_2.png"), 0, 0);
         
         getBackground().setColor(new Color(10,10,10,255));
@@ -44,11 +44,12 @@ public class TowerDefenseWorld extends World
         for(int i = 1; i <= 5; i++) {
             addObject(new Machine(i), 704, Ylocation);
             addObject(new Machine(i), 704, Ylocation);
+           
             addObject(new Text("cost:" + ((Machine)getObjects(Machine.class).get((i*2)-1)).getCost()),704,Ylocation + 28);  
             Ylocation = Ylocation + 128;
         }
         
-        setPaintOrder(Robot.class);
+        setPaintOrder(Robot.class, Machine.class);
     }
     public void drawBase(int type, int X, int Y) {
         getBackground().drawImage(new GreenfootImage("Tower_Base.png"), X-16, Y-16);

@@ -12,7 +12,7 @@ import java.awt.Color;
  */
 public class Machine extends Actor
 {
-    int counter = 0, robotX, robotY, active = 0, type, range, shootingRate, bulletType, EMPCounter, cost;
+    int counter = 0, robotX, robotY, active = 0, type, range, shootingRate, bulletType, EMPCounter, EMP_Counter, cost, I;
 
     public Machine(int type) {
         this.type = type;
@@ -20,7 +20,7 @@ public class Machine extends Actor
             range = 200;
             shootingRate = 40;
             bulletType = 1;
-            setImage("Tower_Base.png");
+            setImage("Tower_Basic.png");
             cost = 5;
         }
         if(type == 2) {
@@ -40,7 +40,7 @@ public class Machine extends Actor
         if(type == 4) {
             range = 80;
             shootingRate = 125;
-            setImage("Arrow(green).png");
+            setImage("Tower_EMP_1.png");
             cost = 5;
         }
         if(type == 5) {
@@ -110,6 +110,7 @@ public class Machine extends Actor
                     }
                     getWorld().addObject(new Explosion(), getX(), getY());
                     EMPCounter = 0;
+                    
                 } else {
                     EMPCounter++;
                 }
@@ -118,7 +119,20 @@ public class Machine extends Actor
             counter = shootingRate;
             EMPCounter = 125;
         }
+        if(type == 4) {
+            if(EMP_Counter == 6){
+                    if(I == 3){
+                        I = 0;
+                    }
+                    setImage("Tower_EMP_"+ Integer.toString(I+1) + ".png");                  
+                    I ++;
+                    EMP_Counter = 0;
+                }
+                EMP_Counter ++;
+        }
     }
+    
+    
     
     public void dragAndSetMachine() {
         if(Greenfoot.mouseDragged(this) && (((Coins)getWorld().getObjects(Coins.class).get(0)).getCoins()-cost) >= 0) {
@@ -139,7 +153,7 @@ public class Machine extends Actor
                     if((((Coins)getWorld().getObjects(Coins.class).get(0)).getCoins()-cost) >= 0){
                         active = 1;
                         TowerDefenseWorld myWorld = (TowerDefenseWorld) getWorld();
-                        myWorld.drawBase(1, getMouseX(), getMouseY());
+                        //myWorld.drawBase(1, getMouseX(), getMouseY());
                         ((Coins)getWorld().getObjects(Coins.class).get(0)).coinsDown(cost);
                     } else {
                         getWorld().removeObject(this);
@@ -158,5 +172,6 @@ public class Machine extends Actor
         if(active == 0) {
             dragAndSetMachine();
         }
+        
     }    
 }
