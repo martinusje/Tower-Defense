@@ -20,7 +20,7 @@ public class LevelSelect extends World
         addObject(new Text("Tower Defense!", 50), 384, 200);
         addObject(new button("Level 1"), 384, 384);
         addObject(new button("Level 2"), 384, 420);
-        
+        Greenfoot.start();
     }
     
     public void act() {
