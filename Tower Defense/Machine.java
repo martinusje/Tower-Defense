@@ -108,7 +108,7 @@ public class Machine extends Actor
                     for (Robot a : (List<Robot>) robotsInRange) {
                         a.speedDown();
                     }
-                    getWorld().addObject(new Explosion(), getX(), getY());
+                    getWorld().addObject(new EMP_Stun(), getX(), getY());
                     EMPCounter = 0;
                     
                 } else {
