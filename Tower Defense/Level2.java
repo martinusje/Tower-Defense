@@ -7,14 +7,14 @@ import java.awt.Color;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Level1 extends World
+public class Level2 extends World
 {
 
     /**
      * Constructor for objects of class levelSelect.
      * 
      */
-    public Level1()
+    public Level2()
     {    
         super(768, 768, 1);
 

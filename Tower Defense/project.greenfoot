@@ -1,9 +1,5 @@
 #Greenfoot properties
-<<<<<<< HEAD
-#Mon Dec 14 11:05:35 CET 2015
-=======
-#Mon Dec 14 10:53:31 CET 2015
->>>>>>> origin/master
+#Mon Dec 14 11:26:33 CET 2015
 target16.name=Sniper_Machine
 dependency35.to=Robot
 target2.name=Explosion
@@ -14,13 +10,8 @@ dependency18.type=UsesDependency
 dependency15.from=Bullet
 readme.editor.y=0
 readme.editor.x=0
-<<<<<<< HEAD
 dependency8.to=Text
 target5.naviview.expanded=false
-=======
-target5.naviview.expanded=false
-dependency8.to=Text
->>>>>>> origin/master
 target14.type=ClassTarget
 simulation.speed=49
 dependency25.type=UsesDependency
@@ -33,6 +24,7 @@ target15.typeParameters=
 target11.width=80
 dependency25.to=Basic_Machine
 dependency32.type=UsesDependency
+class.LevelSelect.superclass=greenfoot.World
 target1.typeParameters=
 dependency39.type=UsesDependency
 dependency36.from=EMP_Machine
@@ -57,18 +49,12 @@ target12.y=130
 target12.x=190
 class.Machine.superclass=greenfoot.Actor
 target3.editor.y=23
-<<<<<<< HEAD
 target18.width=140
 target3.editor.x=40
-=======
-target3.editor.x=40
-target18.width=140
->>>>>>> origin/master
 project.charset=UTF-8
 dependency40.to=Sniper_Machine
 target12.typeParameters=
 dependency15.to=Explosion
-<<<<<<< HEAD
 target15.name=Weak_Bullet
 target5.height=50
 target1.name=Bullet
@@ -76,15 +62,6 @@ target11.naviview.expanded=true
 version=2.7.1
 class.Coins.superclass=greenfoot.Actor
 target8.name=Machine
-=======
-target5.height=50
-target15.name=Weak_Bullet
-target1.name=Bullet
-version=2.7.1
-target11.naviview.expanded=true
-target8.name=Machine
-class.Coins.superclass=greenfoot.Actor
->>>>>>> origin/master
 class.Robot.image=Basic_Robot.png
 dependency36.to=Explosive_Bullet
 dependency10.type=UsesDependency
@@ -97,13 +74,8 @@ dependency21.from=Machine
 dependency28.from=Mortar_Machine
 target12.naviview.expanded=true
 dependency9.to=Lives
-<<<<<<< HEAD
 class.Level_1.superclass=greenfoot.Actor
 target6.type=ClassTarget
-=======
-target6.type=ClassTarget
-class.Level_1.superclass=greenfoot.Actor
->>>>>>> origin/master
 dependency30.to=Explosive_Bullet
 target7.y=70
 target7.x=70
@@ -116,7 +88,6 @@ target8.editor.width=1440
 target3.y=310
 target3.x=10
 target7.typeParameters=
-<<<<<<< HEAD
 dependency26.to=Robot
 target8.height=50
 target16.editor.width=1936
@@ -124,15 +95,7 @@ mainWindow.y=23
 mainWindow.x=0
 target12.showInterface=false
 target3.showInterface=false
-=======
-target8.height=50
-dependency26.to=Robot
-target16.editor.width=1936
-mainWindow.y=23
-mainWindow.x=0
-target3.showInterface=false
-target12.showInterface=false
->>>>>>> origin/master
+class.Level1.superclass=greenfoot.World
 target17.typeParameters=
 dependency3.to=Text
 dependency47.to=Explosion
@@ -144,7 +107,6 @@ dependency47.type=UsesDependency
 dependency44.from=Sniper_Bullet
 target5.editor.y=20
 target5.editor.x=40
-<<<<<<< HEAD
 dependency20.to=Wave
 target5.editor.height=700
 target14.name=Level_1
@@ -152,15 +114,6 @@ target2.naviview.expanded=true
 target9.height=50
 target11.showInterface=false
 target2.showInterface=false
-=======
-target5.editor.height=700
-dependency20.to=Wave
-target14.name=Level_1
-target9.height=50
-target2.naviview.expanded=true
-target2.showInterface=false
-target11.showInterface=false
->>>>>>> origin/master
 target7.name=Text
 dependency41.to=Robot
 dependency16.to=Robot
@@ -174,27 +127,16 @@ dependency16.type=UsesDependency
 target14.typeParameters=
 dependency37.to=Basic_Machine
 target8.width=80
-<<<<<<< HEAD
 target13.editor.height=873
 target4.editor.height=700
-=======
-target4.editor.height=700
-target13.editor.height=873
->>>>>>> origin/master
 target12.type=ClassTarget
 target13.height=50
 dependency23.type=UsesDependency
 dependency20.from=Level_1
 target4.width=100
-<<<<<<< HEAD
 dependency27.from=Mortar_Machine
 target18.showInterface=false
 target9.showInterface=false
-=======
-target9.showInterface=false
-target18.showInterface=false
-dependency27.from=Mortar_Machine
->>>>>>> origin/master
 target10.showInterface=false
 target1.showInterface=false
 target5.type=ClassTarget
@@ -216,13 +158,8 @@ target11.x=10
 target12.editor.height=873
 class.Wave.superclass=greenfoot.Actor
 target5.editor.width=900
-<<<<<<< HEAD
 target17.showInterface=false
 target8.showInterface=false
-=======
-target8.showInterface=false
-target17.showInterface=false
->>>>>>> origin/master
 dependency27.to=Robot
 dependency3.from=Robot
 target11.typeParameters=
@@ -230,7 +167,6 @@ dependency6.type=UsesDependency
 dependency43.from=Sniper_Machine
 dependency46.type=UsesDependency
 target13.editor.width=1440
-<<<<<<< HEAD
 dependency4.to=Robot
 target7.editor.y=20
 target7.editor.x=40
@@ -240,17 +176,6 @@ target16.height=50
 target7.width=80
 target11.editor.height=679
 target2.editor.height=873
-=======
-target7.editor.y=20
-dependency4.to=Robot
-target9.typeParameters=
-target7.editor.x=40
-dependency48.to=Basic_Machine
-target16.height=50
-target7.width=80
-target2.editor.height=873
-target11.editor.height=679
->>>>>>> origin/master
 target13.name=TowerDefenseWorld
 dependency21.to=Coins
 target7.naviview.expanded=true
@@ -261,18 +186,12 @@ dependency42.to=Bullet
 dependency12.from=Robot
 target14.width=80
 dependency17.to=Bullet
-<<<<<<< HEAD
 dependency19.from=TowerDefenseWorld
 target6.y=130
-=======
-target6.y=130
-dependency19.from=TowerDefenseWorld
->>>>>>> origin/master
 class.Bullet.superclass=SmoothMover
 target6.x=100
 class.Explosion.superclass=SmoothMover
 target9.editor.height=700
-<<<<<<< HEAD
 target10.width=80
 target2.y=250
 target18.editor.height=679
@@ -289,24 +208,6 @@ target17.height=50
 dependency29.type=UsesDependency
 dependency26.from=Explosive_Bullet
 target6.typeParameters=
-=======
-target2.y=250
-target18.editor.height=679
-target10.width=80
-target2.x=10
-target10.editor.height=685
-target11.type=ClassTarget
-dependency22.type=UsesDependency
-class.Lives.superclass=greenfoot.Actor
-target18.type=ClassTarget
-target16.editor.y=-8
-dependency38.to=EMP_Machine
-target16.editor.x=-8
-target17.height=50
-target6.typeParameters=
-dependency29.type=UsesDependency
-dependency26.from=Explosive_Bullet
->>>>>>> origin/master
 target4.type=AbstractTarget
 dependency33.from=Robot
 dependency36.type=UsesDependency
@@ -316,21 +217,12 @@ target7.editor.width=900
 target17.editor.height=873
 dependency32.to=Explosive_Bullet
 target9.editor.y=20
-<<<<<<< HEAD
 dependency5.type=UsesDependency
 target9.editor.x=40
 dependency2.from=TowerDefenseWorld
 dependency45.type=UsesDependency
 dependency42.from=Sniper_Machine
 target17.width=80
-=======
-target9.editor.x=40
-dependency5.type=UsesDependency
-dependency2.from=TowerDefenseWorld
-target17.width=80
-dependency45.type=UsesDependency
-dependency42.from=Sniper_Machine
->>>>>>> origin/master
 dependency9.from=TowerDefenseWorld
 dependency49.from=Mortar_Machine
 target10.height=50
@@ -346,6 +238,7 @@ class.GridTest.superclass=greenfoot.World
 dependency49.to=Bullet
 target13.typeParameters=
 target5.name=Lives
+class.button.superclass=greenfoot.Actor
 dependency22.to=TowerDefenseWorld
 dependency14.type=UsesDependency
 dependency11.from=TowerDefenseWorld
@@ -374,6 +267,7 @@ dependency32.from=Robot
 target16.width=120
 target11.editor.x=55
 dependency39.from=EMP_Machine
+class.Level2.superclass=greenfoot.World
 target10.typeParameters=
 target18.editor.width=900
 target8.typeParameters=
@@ -386,13 +280,8 @@ dependency44.type=UsesDependency
 dependency41.from=Sniper_Machine
 dependency33.to=Lives
 dependency8.from=Level_1
-<<<<<<< HEAD
 target12.editor.width=974
 target4.naviview.expanded=true
-=======
-target4.naviview.expanded=true
-target12.editor.width=974
->>>>>>> origin/master
 dependency48.from=Robot
 target14.height=50
 target18.naviview.expanded=true
@@ -421,7 +310,6 @@ dependency17.from=Machine
 dependency23.to=EMP_Stun
 dependency20.type=UsesDependency
 target16.type=ClassTarget
-class.TowerDefenseWorld.superclass=greenfoot.World
 dependency27.type=UsesDependency
 dependency24.from=Robot
 target2.type=ClassTarget
@@ -450,14 +338,8 @@ dependency40.from=TowerDefenseWorld
 dependency7.from=Robot
 target6.width=80
 dependency47.from=Bullet
-<<<<<<< HEAD
-class.levelSelect.superclass=greenfoot.World
 target6.editor.y=43
 mainWindow.height=873
-=======
-target6.editor.y=43
-mainWindow.height=854
->>>>>>> origin/master
 target9.naviview.expanded=false
 target6.editor.x=40
 class.Bullet.image=ball.png
@@ -527,13 +409,9 @@ dependency49.type=UsesDependency
 target14.editor.height=685
 dependency46.from=Robot
 target11.editor.width=900
-world.lastInstantiated=TowerDefenseWorld
+world.lastInstantiated=LevelSelect
 dependency14.to=Lives
 target18.typeParameters=
 target1.height=50
 target4.typeParameters=
-<<<<<<< HEAD
 mainWindow.width=1440
-=======
-mainWindow.width=1421
->>>>>>> origin/master
