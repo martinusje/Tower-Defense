@@ -2,24 +2,24 @@ import greenfoot.*;
 import java.awt.Color;
 
 /**
- * Write a description of class TowerDefenseWorld here.
+ * Write a description of class levelSelect here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class TowerDefenseWorld extends World
+public class Level1 extends World
 {
 
     /**
-     * Constructor for objects of class TowerDefenseWorld.
+     * Constructor for objects of class levelSelect.
      * 
      */
-    public TowerDefenseWorld()
+    public Level1()
     {    
         super(768, 768, 1);
 
         getBackground().drawImage(new GreenfootImage("Background_2.png"), 0, 0);        
-        getBackground().drawImage(new GreenfootImage("track_2.png"), 0, 0);
+        //getBackground().drawImage(new GreenfootImage("track_2.png"), 0, 0);
         
         getBackground().setColor(new Color(10,10,10,255));
         getBackground().drawRect(0, 0,  640, 640);
@@ -54,6 +54,4 @@ public class TowerDefenseWorld extends World
     public void drawBase(int type, int X, int Y) {
         getBackground().drawImage(new GreenfootImage("Tower_Base.png"), X-16, Y-16);
     }
-    
-
 }
