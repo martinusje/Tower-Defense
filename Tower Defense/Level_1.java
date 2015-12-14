@@ -10,10 +10,10 @@ public class Level_1 extends Actor
 {
     int counter = 0, robotCounter = 0, waveCounter = 1, i = 0, j = 0, amountOfRobots = 0, timeBetweenWaves = 50;
     double waveStrength;
-    int robotTypeOne = 2;
-            int amountRobotTypeOne = 10;
-            int robotTypeTwo = 1;
-            int amountRobotTypeTwo = 10;
+    int robotTypeOne = 2;        
+    int amountRobotTypeOne = 10;
+    int robotTypeTwo = 1;
+    int amountRobotTypeTwo = 10;
     
     public void act() 
     {
