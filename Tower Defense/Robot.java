@@ -34,9 +34,9 @@ public class Robot extends SmoothMover
         getWorld().removeObject(this);
     }
     
-    public int getCounter() 
+    public double getCounter() 
     {
-        return counterCounter;
+        return stepCounter;
     }
     
     public void lifeDown()

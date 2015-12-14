@@ -89,7 +89,7 @@ public class Machine extends Actor
             if(type != 4) {
                 ArrayList counterArrayInRange = new ArrayList(robotsInRange.size());
                 for(Robot a : (List<Robot>) robotsInRange) {
-                    int counterCounter = a.getCounter();
+                    double counterCounter = a.getCounter();
                     counterArrayInRange.add(counterCounter);
                 }
 
