@@ -25,6 +25,7 @@ public class Bullet extends SmoothMover
         }
         if(type == 4) {
             speed = 15;
+            setImage("Bullet_Sniper.png");
         }
         setRotation(dir);
         direction = dir;

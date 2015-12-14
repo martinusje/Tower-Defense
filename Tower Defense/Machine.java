@@ -47,7 +47,7 @@ public class Machine extends Actor
             range = 300;
             shootingRate = 125;
             bulletType = 4;
-            setImage("Arrow(yellow).png");
+            setImage("Tower_Sniper.png");
             cost = 10;
         }
         counter = shootingRate;
