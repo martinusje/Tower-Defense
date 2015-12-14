@@ -53,7 +53,7 @@ public class Level1 extends World
         getBackground().drawImage(new GreenfootImage("Tower_Base.png"), X-16, Y-16);
     }
     
-    int counter = 0, robotCounter = 0, waveCounter = 1, i = 0, j = 0, amountOfRobots = 0, timeBetweenWaves = 50;
+    int counter = 0, robotCounter = 0, waveCounter = 0, i = 0, j = 0, amountOfRobots = 0, timeBetweenWaves = 50;
     double waveStrength;
     int robotTypeOne = 2;        
     int amountRobotTypeOne = 10;
@@ -64,10 +64,14 @@ public class Level1 extends World
     {
         if (waveCounter == 0) 
         {
-            i = 1;
-            j = 2;
-            amountOfRobots = 10;
-            waveStrength = 1;
+            robotTypeOne = 2;
+            amountRobotTypeOne = 10;
+            robotTypeTwo = 1;
+            amountRobotTypeTwo = 10;
+            i = 2;
+            j = 1;
+            amountOfRobots = 15;
+            waveStrength = 1.5;
         }
         if (waveCounter == 1)
         {
@@ -82,6 +86,20 @@ public class Level1 extends World
         }
         
         if(counter == 40) {
+            if(waveCounter == 0) {
+                if(robotCounter < amountOfRobots) {
+                    if(robotCounter < amountRobotTypeOne) {
+                        addObject(new Robot(robotTypeOne, waveStrength),80,640);
+                        robotCounter++;
+                    } else if(robotCounter < amountRobotTypeOne + amountRobotTypeTwo) {
+                        addObject(new Robot(robotTypeTwo, waveStrength),80,640);
+                        robotCounter++;
+                    }
+                } else {
+                    robotCounter = 0;
+                    waveCounter++;
+                }
+            }
             if(waveCounter == 1) {
                 if(robotCounter < amountOfRobots) {
                     if(robotCounter < amountRobotTypeOne) {
@@ -93,6 +111,7 @@ public class Level1 extends World
                     }
                 }
             }
+            
             counter = 0;
         } else {
             counter++;

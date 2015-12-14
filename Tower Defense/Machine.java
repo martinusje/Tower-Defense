@@ -32,7 +32,7 @@ public class Machine extends Actor
         }
         if(type == 3) {
             range = 100;
-            shootingRate = 40;
+            shootingRate = 50;
             bulletType = 3;
             setImage("Tower_Strong.png");
             cost = 10;
@@ -51,6 +51,7 @@ public class Machine extends Actor
             cost = 10;
         }
         counter = shootingRate;
+        EMPCounter = shootingRate;
     }
 
     public int returnRobotX()
@@ -97,27 +98,24 @@ public class Machine extends Actor
                 robotY = robotInRange.getY();
 
                 turnTowards(robotInRange.getX(), robotInRange.getY());
-                if(counter == shootingRate) {
+                if(counter >= shootingRate) {
                     getWorld().addObject(new Bullet(getRotation(), robotInRange.getX(), robotInRange.getY(), robotInRange, bulletType), getX(), getY());
                     counter = 0;
-                } else {
-                    counter ++;
                 }
             } else {
-                if(EMPCounter == 125) {
+                if(EMPCounter >= shootingRate) {
                     for (Robot a : (List<Robot>) robotsInRange) {
                         a.speedDown();
                     }
                     getWorld().addObject(new EMP_Stun(), getX(), getY());
                     EMPCounter = 0;
-                    
-                } else {
-                    EMPCounter++;
                 }
             }
+        } 
+        if(type != 4) {
+            counter ++;
         } else {
-            counter = shootingRate;
-            EMPCounter = 125;
+            EMPCounter ++;
         }
         if(type == 4) {
             if(EMP_Counter == 6){
