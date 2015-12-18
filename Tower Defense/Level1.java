@@ -64,10 +64,10 @@ public class Level1 extends World
     {
         if (waveCounter == 0) 
         {
-            robotTypeOne = 2;
-            amountRobotTypeOne = 10;
-            robotTypeTwo = 1;
-            amountRobotTypeTwo = 10;
+            robotTypeOne = 1;
+            amountRobotTypeOne = 7;
+            robotTypeTwo = 2;
+            amountRobotTypeTwo = 5;
             i = 2;
             j = 1;
             amountOfRobots = 15;
@@ -78,7 +78,7 @@ public class Level1 extends World
             robotTypeOne = 1;
             amountRobotTypeOne = 10;
             robotTypeTwo = 2;
-            amountRobotTypeTwo = 10;
+            amountRobotTypeTwo = 7;
             i = 2;
             j = 1;
             amountOfRobots = 15;
@@ -109,9 +109,11 @@ public class Level1 extends World
                         addObject(new Robot(robotTypeTwo, waveStrength),80,640);
                         robotCounter++;
                     }
+                } else {
+                    robotCounter = 0;
+                    waveCounter++;
                 }
-            }
-            
+            } 
             counter = 0;
         } else {
             counter++;

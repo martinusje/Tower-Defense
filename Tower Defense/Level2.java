@@ -64,15 +64,19 @@ public class Level2 extends World
     {
         if (waveCounter == 0) 
         {
-            i = 1;
-            j = 2;
-            amountOfRobots = 10;
-            waveStrength = 1;
+            robotTypeOne = 1;
+            amountRobotTypeOne = 10;
+            robotTypeTwo = 2;
+            amountRobotTypeTwo = 7;
+            i = 2;
+            j = 1;
+            amountOfRobots = 15;
+            waveStrength = 1.5;
         }
         if (waveCounter == 1)
         {
             robotTypeOne = 1;
-            amountRobotTypeOne = 10;
+            amountRobotTypeOne = 13;
             robotTypeTwo = 2;
             amountRobotTypeTwo = 10;
             i = 2;
@@ -82,6 +86,20 @@ public class Level2 extends World
         }
         
         if(counter == 40) {
+            if(waveCounter == 0) {
+                if(robotCounter < amountOfRobots) {
+                    if(robotCounter < amountRobotTypeOne) {
+                        addObject(new Robot(robotTypeOne, waveStrength),80,640);
+                        robotCounter++;
+                    } else if(robotCounter < amountRobotTypeOne + amountRobotTypeTwo) {
+                        addObject(new Robot(robotTypeTwo, waveStrength),80,640);
+                        robotCounter++;
+                    }
+                } else {
+                    robotCounter = 0;
+                    waveCounter++;
+                }
+            }
             if(waveCounter == 1) {
                 if(robotCounter < amountOfRobots) {
                     if(robotCounter < amountRobotTypeOne) {
@@ -91,11 +109,14 @@ public class Level2 extends World
                         addObject(new Robot(robotTypeTwo, waveStrength),80,640);
                         robotCounter++;
                     }
+                } else {
+                    robotCounter = 0;
+                    waveCounter++;
                 }
-            }
+            } 
             counter = 0;
         } else {
             counter++;
         }
-    } 
+    }    
 }
