@@ -29,13 +29,13 @@ public class Level2 extends World
             getBackground().drawRect(640, i*128,  128, 128);
         } 
         
-        addObject(new Text("Lives:", 26),30,680);
+        addObject(new Text("Lives:", 26),40,680);
         addObject(new Lives("10"),80,680);  
         
-        addObject(new Text("Wave:", 26),30,700);
+        addObject(new Text("Wave:", 26),40,700);
         addObject(new Wave("1"),80,700);  
         
-        addObject(new Text("Coins:", 26),30,720);  
+        addObject(new Text("Coins:", 26),40,720);  
         addObject(new Coins("20"),80,720);  
         
         int Ylocation = 64;

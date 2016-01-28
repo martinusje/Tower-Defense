@@ -17,26 +17,28 @@ public class Level1 extends World
     public Level1()
     {    
         super(768, 768, 1);
-
-        getBackground().drawImage(new GreenfootImage("Background_2.png"), 0, 0);        
+        
+        getBackground().drawImage(new GreenfootImage("grass.jpg"), 0, 0);        
         getBackground().drawImage(new GreenfootImage("track_2.png"), 0, 0);
         
         getBackground().setColor(new Color(10,10,10,255));
-        getBackground().drawRect(0, 0,  640, 640);
+        getBackground().drawRect(0, 0, 640, 640);
         
         for(int i = 0; i < 5; i++) {
-            //setBackground(new GreenfootImage(2,2));
+            getBackground().setColor(new Color(120,154,57,255));
+            getBackground().fillRect(640, i*128,  128, 128);
+            getBackground().setColor(new Color(10,10,10,255));
             getBackground().drawRect(640, i*128,  128, 128);
         } 
         
-        addObject(new Text("Lives:", 26),30,680);
-        addObject(new Lives("10"),80,680);  
+        addObject(new Text("Lives:", 26),140,680);
+        addObject(new Lives("10"),140,700);  
         
-        addObject(new Text("Wave:", 26),30,700);
-        addObject(new Wave("1"),80,700);  
+        addObject(new Text("Wave:", 26),360,680);
+        addObject(new Wave("1"),360,700);  
         
-        addObject(new Text("Coins:", 26),30,720);  
-        addObject(new Coins("20"),80,720);  
+        addObject(new Text("Coins:", 26),580,680);  
+        addObject(new Coins("20"),580,700);  
         
         int Ylocation = 64;
         for(int i = 1; i <= 5; i++) {
