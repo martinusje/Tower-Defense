@@ -17,9 +17,11 @@ public class LevelSelect extends World
     public LevelSelect()
     {    
         super(768, 768, 1);
+        getBackground().drawImage(new GreenfootImage("Background_Menu.png"), 0, 0);
         addObject(new Text("Tower Defense!", 50), 384, 200);
         addObject(new button("Level 1"), 384, 384);
         addObject(new button("Level 2"), 384, 420);
+        
         Greenfoot.start();
     }
     
