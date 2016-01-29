@@ -59,6 +59,9 @@ public class Level2 extends World
     int amountRobotTypeOne = 10;
     int robotTypeTwo = 1;
     int amountRobotTypeTwo = 10;
+    int delayCounter = 0;
+    int startPointX = 80;
+    int startPointY = 640;
     
      public void act() 
     {
@@ -86,34 +89,28 @@ public class Level2 extends World
         }
         
         if(counter == 40) {
-            if(waveCounter == 0) {
-                if(robotCounter < amountOfRobots) {
-                    if(robotCounter < amountRobotTypeOne) {
-                        addObject(new Robot(robotTypeOne, waveStrength),80,640);
-                        robotCounter++;
-                    } else if(robotCounter < amountRobotTypeOne + amountRobotTypeTwo) {
-                        addObject(new Robot(robotTypeTwo, waveStrength),80,640);
-                        robotCounter++;
-                    }
-                } else {
+            if(robotCounter < amountOfRobots) {
+                if(robotCounter < amountRobotTypeOne) {
+                    addObject(new Robot(robotTypeOne, waveStrength),startPointX,startPointY);
+                    robotCounter++;
+                } else if(robotCounter < amountRobotTypeOne + amountRobotTypeTwo) {
+                    addObject(new Robot(robotTypeTwo, waveStrength),startPointX,startPointY);
+                    robotCounter++;
+                }
+            } else {
+                if(delayCounter >= 40) {
                     robotCounter = 0;
-                    waveCounter++;
+                    if(waveCounter > 1){
+                        waveStrength = waveStrength + 0.1;
+                    } else {
+                        waveCounter++;
+                        ((Wave)getObjects(Wave.class).get(0)).imageUp();
+                    }
+                    delayCounter = 0;
+                } else {
+                    delayCounter++;
                 }
             }
-            if(waveCounter == 1) {
-                if(robotCounter < amountOfRobots) {
-                    if(robotCounter < amountRobotTypeOne) {
-                        addObject(new Robot(robotTypeOne, waveStrength),80,640);
-                        robotCounter++;
-                    } else if(robotCounter < amountRobotTypeOne + amountRobotTypeTwo) {
-                        addObject(new Robot(robotTypeTwo, waveStrength),80,640);
-                        robotCounter++;
-                    }
-                } else {
-                    robotCounter = 0;
-                    waveCounter++;
-                }
-            } 
             counter = 0;
         } else {
             counter++;

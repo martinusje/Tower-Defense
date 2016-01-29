@@ -62,6 +62,8 @@ public class Level1 extends World
     int robotTypeTwo = 1;
     int amountRobotTypeTwo = 10;
     int delayCounter = 0;
+    int startPointX = 80;
+    int startPointY = 640;
     
      public void act() 
     {
@@ -102,10 +104,10 @@ public class Level1 extends World
         if(counter == 40) {
             if(robotCounter < amountOfRobots) {
                 if(robotCounter < amountRobotTypeOne) {
-                    addObject(new Robot(robotTypeOne, waveStrength),80,640);
+                    addObject(new Robot(robotTypeOne, waveStrength),startPointX,startPointY);
                     robotCounter++;
                 } else if(robotCounter < amountRobotTypeOne + amountRobotTypeTwo) {
-                    addObject(new Robot(robotTypeTwo, waveStrength),80,640);
+                    addObject(new Robot(robotTypeTwo, waveStrength),startPointX,startPointY);
                     robotCounter++;
                 }
             } else {
