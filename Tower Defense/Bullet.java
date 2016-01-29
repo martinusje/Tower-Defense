@@ -8,34 +8,50 @@ import java.util.List;
  */
 public class Bullet extends SmoothMover
 {
-    int direction, speed, robotX, robotY, counter = 0, explosionCounter = 0, type, IWantToDie = 0;
+    //BulletSpeed
+    int speed;
+    
+    //BulletType, defined by shooting machine
+    int type;
+    
+    //If already dead = 1, run first at act
+    int IWantToDie = 0;
+    
+    //Use theOwner for following bullet
     Actor theOwner;
+    
     public Bullet(int dir, int X, int Y, Actor theOwner, int type) { 
         this.type = type;
+        //Bullet basic by robot 1
         if(type == 1) {
             speed = 10;
             setImage("Bullet_Basic.png");
         }
+        //Bullet basic by robot 2
         if(type == 2) {
             speed = 10;
             setImage("Bullet_Basic.png");
         }
+        //Rocket by robot 3
         if(type == 3) {
             speed = 10;
             setImage("Bullet_Strong.png");
         }
+        //Sniper bullet by robot 4
         if(type == 4) {
             speed = 15;
             setImage("Bullet_Sniper.png");
         }
+        
+        //Set rotation
         setRotation(dir);
-        direction = dir;
-        robotX = X;
-        robotY = Y;
+        
+        //Declare the owner
         this.theOwner = theOwner;
     } 
     
     public int getType() {
+        //Return type for robot
         return type;
     }
     
@@ -57,7 +73,6 @@ public class Bullet extends SmoothMover
             a.lifeDown();
         }
         getWorld().addObject(new Explosion(), getX(), getY());
-        explosionCounter = 0;
         IWantToDie = 1;
     }
     
@@ -66,7 +81,7 @@ public class Bullet extends SmoothMover
             getWorld().removeObject(this);
             return;
         }
-        if(counter == 0 && theOwner.getWorld() != null && type == 4) {
+        if(theOwner.getWorld() != null && type == 4) {
             ifFollowingBullet();
         }        
         if(getX() >= 640 || getX() == 0 || getY() >= 640 || getY() == 0) {
