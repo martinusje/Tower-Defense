@@ -24,8 +24,8 @@ public class Machine extends Actor
             cost = 5;
         }
         if(type == 2) {
-            range = 100;
-            shootingRate = 20;
+            range = 80;
+            shootingRate = 25;
             bulletType = 2;
             setImage("Tower_Fast.png");
             cost = 5;
