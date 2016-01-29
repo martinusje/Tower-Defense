@@ -7,22 +7,70 @@ import java.awt.Color;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Level2 extends World
+public class Level extends World
 {
+    //Amount of waves
+    int amountOfWaves = 1;
+    
+    //robotVariable placeholders
+    int robotTypeOne = 2;        
+    int amountRobotTypeOne = 10;
+    int robotTypeTwo = 1;
+    int amountRobotTypeTwo = 10;
+    int amountOfRobots = amountRobotTypeOne + amountRobotTypeTwo;
 
-    /**
-     * Constructor for objects of class levelSelect.
-     * 
-     */
-    public Level2()
+    //Startpointcoördinates
+    int startPointX = 80;
+    int startPointY = 640;
+    
+    public Level(int levelSelector)
     {    
         super(768, 768, 1);
-
-        //Set background image
-        getBackground().drawImage(new GreenfootImage("Background_2.png"), 0, 0);        
         
-        //Set track
-        getBackground().drawImage(new GreenfootImage("Track_2.png"), 0, 0);
+        if(levelSelector == 1){
+            //Level 1
+            //Set background image
+            getBackground().drawImage(new GreenfootImage("grass.jpg"), 0, 0);        
+            
+            //Set track
+            getBackground().drawImage(new GreenfootImage("Track_1.png"), 0, 0);
+            
+            //Amount of waves before only increasing waveStrength
+            amountOfWaves = 2;
+            
+            //robotVariable placeholders
+            robotTypeOne = 2;        
+            amountRobotTypeOne = 10;
+            robotTypeTwo = 1;
+            amountRobotTypeTwo = 10;
+            amountOfRobots = amountRobotTypeOne + amountRobotTypeTwo;
+        
+            //Startpointcoördinates
+            startPointX = 80;
+            startPointY = 640;
+        }
+        if(levelSelector == 2) {
+            //Level 2
+            //Set background image
+            getBackground().drawImage(new GreenfootImage("grass.jpg"), 0, 0);        
+            
+            //Set track
+            getBackground().drawImage(new GreenfootImage("Track_2.png"), 0, 0);
+            
+            //Amount of waves
+            amountOfWaves = 1;
+            
+            //robotVariable placeholders
+            robotTypeOne = 2;        
+            amountRobotTypeOne = 10;
+            robotTypeTwo = 1;
+            amountRobotTypeTwo = 10;
+            amountOfRobots = amountRobotTypeOne + amountRobotTypeTwo;
+        
+            //Startpointcoördinates
+            startPointX = 80;
+            startPointY = 640;
+        }
         
         //Draw field rectangle
         getBackground().setColor(new Color(10,10,10,255));
@@ -35,14 +83,14 @@ public class Level2 extends World
         } 
         
         //Draw counters for lives, waves and coins
-        addObject(new Text("Lives:", 26),40,680);
-        addObject(new Lives("10"),80,680);  
+        addObject(new Text("Lives:", 26),192,680);
+        addObject(new Lives("10"),192,700);  
         
-        addObject(new Text("Wave:", 26),40,700);
-        addObject(new Wave("1"),80,700);  
+        addObject(new Text("Wave:", 26),384,680);
+        addObject(new Wave("1"),384,700);  
         
-        addObject(new Text("Coins:", 26),40,720);  
-        addObject(new Coins("20"),80,720);  
+        addObject(new Text("Coins:", 26),576,680);  
+        addObject(new Coins("20"),576,700);  
         
         //Y location of machine placeholder
         int Ylocation = 64;
@@ -56,12 +104,12 @@ public class Level2 extends World
             Ylocation = Ylocation + 128;
         }
     }
-    
+        
     //Main counter
     int counter = 0;
     
     //Amount of robots that have passed
-    int robotCounter = 0; 
+    int robotCounter = 0;
     
     //Amount of waves that have passed
     int waveCounter = 0;
@@ -69,46 +117,41 @@ public class Level2 extends World
     //Strength of wave
     double waveStrength;
     
-    //Amount of waves
-    int amountOfWaves = 1;
-    
     //Time between waves
     int timeBetweenWaves = 0;
-    
-    //robotVariable placeholders
-    int robotTypeOne = 2;        
-    int amountRobotTypeOne = 10;
-    int robotTypeTwo = 1;
-    int amountRobotTypeTwo = 10;
-    int amountOfRobots = amountRobotTypeOne + amountRobotTypeTwo;
 
-    //Startpointcoördinates
-    int startPointX = 80;
-    int startPointY = 640;
-    
-     public void act() 
-    {
+    public void act() 
+    {        
         //Set robotVariables by wave
         if (waveCounter == 0) 
         {
             robotTypeOne = 1;
-            amountRobotTypeOne = 10;
+            amountRobotTypeOne = 7;
             robotTypeTwo = 2;
-            amountRobotTypeTwo = 7;
-            amountOfRobots = 15;
+            amountRobotTypeTwo = 5;
+            amountOfRobots = amountRobotTypeOne + amountRobotTypeTwo;
             waveStrength = 1.5;
         }
         if (waveCounter == 1)
         {
             robotTypeOne = 1;
-            amountRobotTypeOne = 13;
+            amountRobotTypeOne = 10;
+            robotTypeTwo = 2;
+            amountRobotTypeTwo = 7;
+            amountOfRobots = amountRobotTypeOne + amountRobotTypeTwo;
+            waveStrength = 1.7;
+        }
+        if (waveCounter == 2)
+        {
+            robotTypeOne = 1;
+            amountRobotTypeOne = 12;
             robotTypeTwo = 2;
             amountRobotTypeTwo = 10;
-            amountOfRobots = 15;
-            waveStrength = 1.5;
+            amountOfRobots = amountRobotTypeOne + amountRobotTypeTwo;
+            waveStrength = 1.8;
         }
         
-        //Main counter        
+        //Main counter
         if(counter == 40) {
             //Check if robots reaches amountOfRobots set for this wave
             if(robotCounter < amountOfRobots) {
@@ -146,4 +189,5 @@ public class Level2 extends World
             counter++;
         }
     }    
+    
 }

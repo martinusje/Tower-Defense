@@ -27,10 +27,10 @@ public class LevelSelect extends World
     
     public void act() {
         if(Greenfoot.mouseClicked(getObjects(button.class).get(0)) || Greenfoot.isKeyDown("1")) {
-            Greenfoot.setWorld(new Level1());
+            Greenfoot.setWorld(new Level(1));
         }
         if(Greenfoot.mouseClicked(getObjects(button.class).get(1)) || Greenfoot.isKeyDown("2")) {
-            Greenfoot.setWorld(new Level2());
+            Greenfoot.setWorld(new Level(2));
         }
     }
     
