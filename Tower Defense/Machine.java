@@ -24,18 +24,18 @@ public class Machine extends Actor
             cost = 5;
         }
         if(type == 2) {
-            range = 80;
+            range = 100;
             shootingRate = 25;
             bulletType = 2;
             setImage("Tower_Fast.png");
             cost = 5;
         }
         if(type == 3) {
-            range = 100;
+            range = 80;
             shootingRate = 50;
             bulletType = 3;
             setImage("Tower_Strong.png");
-            cost = 10;
+            cost = 20;
         }
         if(type == 4) {
             range = 80;
