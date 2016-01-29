@@ -104,8 +104,8 @@ public class Level2 extends World
                         waveStrength = waveStrength + 0.1;
                     } else {
                         waveCounter++;
-                        ((Wave)getObjects(Wave.class).get(0)).imageUp();
                     }
+                    ((Wave)getObjects(Wave.class).get(0)).imageUp();
                     delayCounter = 0;
                 } else {
                     delayCounter++;
