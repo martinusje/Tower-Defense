@@ -19,7 +19,7 @@ public class Level1 extends World
         super(768, 768, 1);
         
         getBackground().drawImage(new GreenfootImage("grass.jpg"), 0, 0);        
-        getBackground().drawImage(new GreenfootImage("track_2.png"), 0, 0);
+        getBackground().drawImage(new GreenfootImage("Track_1.png"), 0, 0);
         
         getBackground().setColor(new Color(10,10,10,255));
         getBackground().drawRect(0, 0, 640, 640);
