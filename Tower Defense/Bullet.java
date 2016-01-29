@@ -57,27 +57,35 @@ public class Bullet extends SmoothMover
     
     public void ifFollowingBullet()
     {
+        //Turn towards the coördinates of the machine who shot it
         turnTowards(theOwner.getX(), theOwner.getY());
         return;
     }
     
     public void ifNotExplosiveNorFollowingBullet()
     {
+        //If outside of the playing field, delete
         IWantToDie = 1;
     }
     
     public void ifExplosiveBullet() 
     {
+        //LifeDown twice on every robot in its explosive range
         for (Robot a : (List<Robot>) getObjectsInRange(96,Robot.class)) {
             a.lifeDown();
             a.lifeDown();
         }
+        
+        //Show explosion
         getWorld().addObject(new Explosion(), getX(), getY());
+        
+        //Remove bullet
         IWantToDie = 1;
     }
     
     public void act() {
         if(IWantToDie == 1) {
+            //Removing function
             getWorld().removeObject(this);
             return;
         }
@@ -90,6 +98,8 @@ public class Bullet extends SmoothMover
         if(isTouching(Robot.class) && type == 3) {
             ifExplosiveBullet();
         }
+        
+        //Move at variable Speed
         move(speed);
     }    
 }
