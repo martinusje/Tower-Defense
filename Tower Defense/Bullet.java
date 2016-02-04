@@ -27,17 +27,17 @@ public class Bullet extends SmoothMover
             speed = 10;
             setImage("Bullet_Basic.png");
         }
-        //Bullet basic by robot 2
+        //Bullet basic by machine 2
         if(type == 2) {
             speed = 10;
             setImage("Bullet_Basic.png");
         }
-        //Rocket by robot 3
+        //Rocket by machine 4
         if(type == 3) {
             speed = 10;
             setImage("Bullet_Strong.png");
         }
-        //Sniper bullet by robot 4
+        //Sniper bullet by machine 5
         if(type == 4) {
             speed = 15;
             setImage("Bullet_Sniper.png");
@@ -49,6 +49,8 @@ public class Bullet extends SmoothMover
         //Declare the owner
         this.theOwner = theOwner;
     } 
+    
+
     
     public int getType() {
         //Return type for robot
@@ -82,6 +84,7 @@ public class Bullet extends SmoothMover
         //Remove bullet
         IWantToDie = 1;
     }
+    
     
     public void act() {
         if(IWantToDie == 1) {

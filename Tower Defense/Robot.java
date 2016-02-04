@@ -43,7 +43,8 @@ public class Robot extends SmoothMover
     {
         life--;
     } 
-    
+   
+   
     public void speedDown() 
     {
         if(speedCounterTrigger == 0) {
