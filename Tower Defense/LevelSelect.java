@@ -22,15 +22,15 @@ public class LevelSelect extends World
         getBackground().drawImage(new GreenfootImage("Background_Menu.png"), 0, 0);
         
         //Header text
-        addObject(new Text("Tower Defense!", 50), 384, 200);
+        addObject(new Text("Tower Defense!", 80, 0), 384, 200);
         
         //Level clicker
-        addObject(new button("Level 1", 1), 300, 384);
+        addObject(new button("Level 1", 1, 0), 300, 384);
         getBackground().drawImage(new GreenfootImage("Track_1_lvlselect.png"), 234, 400);
-        addObject(new button("Level 2", 1), 460, 384);
+        addObject(new button("Level 2", 1, 0), 460, 384);
         getBackground().drawImage(new GreenfootImage("Track_2_lvlselect.png"), 396, 400);
-        addObject(new button("", 2), 298, 463);
-        addObject(new button("", 2), 460, 463);
+        addObject(new button("", 2, 0), 298, 463);
+        addObject(new button("", 2, 0), 460, 463);
         //Start without clicking start
         Greenfoot.start();
     }

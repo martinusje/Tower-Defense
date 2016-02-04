@@ -14,16 +14,21 @@ public class button extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     int buttonTypeJWZ;
-    public button(String text, int buttonType)
+    public button(String text, int buttonType, int blackorwhite)
     {
         buttonTypeJWZ = buttonType;
-        updateImage(text);
+        updateImage(text, blackorwhite);
     }
  
-    public void updateImage(String text)
+    public void updateImage(String text, int blackorwhite)
     {
         if (buttonTypeJWZ == 1){
-            setImage(new GreenfootImage(text, 26, Color.black, new Color(0, 0, 0, 0)));
+            if(blackorwhite == 0) {
+                setImage(new GreenfootImage(text, 26, Color.black, new Color(0, 0, 0, 0)));
+            }
+            if(blackorwhite == 1) {
+                setImage(new GreenfootImage(text, 26, Color.white, new Color(0, 0, 0, 0)));
+            }
         }
         if (buttonTypeJWZ == 2){
             setImage(new GreenfootImage("Empty_Button.png"));

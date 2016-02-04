@@ -10,14 +10,17 @@ import java.awt.Color;
 
 public class Text extends Actor
 {
-    public Text(String text, int textSize)
+    public Text(String text, int textSize, int blackorwhite)
     {
-        updateImage(text, textSize);
-        
+        updateImage(text, textSize, blackorwhite);
     }
  
-    public void updateImage(String text, int textSize)
+    public void updateImage(String text, int textSize, int blackorwhite)
     {
-        setImage(new GreenfootImage(text, textSize, Color.black, new Color(0, 0, 0, 0)));
+        if(blackorwhite == 0) {
+            setImage(new GreenfootImage(text, textSize, Color.black, new Color(0, 0, 0, 0)));
+        } else {
+            setImage(new GreenfootImage(text, textSize, Color.white, new Color(0, 0, 0, 0)));
+        }
     }
 }

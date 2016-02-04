@@ -83,13 +83,13 @@ public class Level extends World
         } 
         
         //Draw counters for lives, waves and coins
-        addObject(new Text("Lives:", 26),192,680);
+        addObject(new Text("Lives:", 26, 0),192,680);
         addObject(new Lives("10"),192,700);  
         
-        addObject(new Text("Wave:", 26),384,680);
+        addObject(new Text("Wave:", 26, 0),384,680);
         addObject(new Wave("1"),384,700);  
         
-        addObject(new Text("Coins:", 26),576,680);  
+        addObject(new Text("Coins:", 26, 0),576,680);  
         addObject(new Coins("20"),576,700);  
         
         //Y location of machine placeholder
@@ -100,9 +100,14 @@ public class Level extends World
             addObject(new Machine(i), 704, Ylocation);
             addObject(new Machine(i), 704, Ylocation);
            
-            addObject(new Text("cost:" + ((Machine)getObjects(Machine.class).get((i*2)-1)).getCost(), 26),704,Ylocation + 28);  
+            addObject(new Text("cost:" + ((Machine)getObjects(Machine.class).get((i*2)-1)).getCost(), 26, 0),704,Ylocation + 28);  
             Ylocation = Ylocation + 128;
         }
+    }
+    
+    public void gameOver() 
+    {
+        Greenfoot.setWorld(new GameOver());
     }
         
     //Main counter

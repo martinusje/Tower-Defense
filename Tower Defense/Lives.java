@@ -29,8 +29,8 @@ public class Lives extends Actor
         setImage(new GreenfootImage(Integer.toString(lives), 26, Color.black, new Color(0, 0, 0, 0)));
         livesString = Integer.toString(lives);
         if(lives <= 0) {
-            System.out.println("You lose suckaahhh!");
-            Greenfoot.stop();
+            ((Level)getWorld()).gameOver();
+            
         }
     }
 }
