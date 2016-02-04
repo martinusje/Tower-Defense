@@ -12,8 +12,6 @@ public class EMP_Stun extends SmoothMover
     int maxCounter = 0;
     public void act() 
     {
-        
-        
         if(maxCounter == 6 ) {
             EMP_Stun--;
             setImage("EMP_Stun_" + Integer.toString(EMP_Stun*2) + ".png"); 
