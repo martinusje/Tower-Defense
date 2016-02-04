@@ -32,10 +32,10 @@ public class Machine extends Actor
         }
         if(type == 3) {
             range = 80;
-            shootingRate = 50;
+            shootingRate = 40;
             bulletType = 3;
             setImage("Tower_Strong.png");
-            cost = 20;
+            cost = 15;
         }
         if(type == 4) {
             range = 80;
