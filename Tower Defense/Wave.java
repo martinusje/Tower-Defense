@@ -10,6 +10,7 @@ import java.awt.Color;
 
 public class Wave extends Actor
 {
+    
     public String waveString;
     public Wave(String text)
     {
@@ -22,6 +23,7 @@ public class Wave extends Actor
         setImage(new GreenfootImage(text, 26, Color.black, new Color(0, 0, 0, 0)));
     }
     
+
     public void imageUp()
     {
         int wave = Integer.parseInt(waveString);

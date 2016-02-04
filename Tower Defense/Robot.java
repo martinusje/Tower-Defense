@@ -100,7 +100,7 @@ public class Robot extends SmoothMover
         type = theBullet.getType();
         
         if(type == 1) {
-            life = life - 2;
+            life = life - 10;
         }
         if(type == 2) {
             life --;

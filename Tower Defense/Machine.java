@@ -16,6 +16,7 @@ public class Machine extends Actor
 
     public Machine(int type) {
         this.type = type;
+        //Basic tower 
         if(type == 1) {
             range = 200;
             shootingRate = 40;
@@ -23,26 +24,30 @@ public class Machine extends Actor
             setImage("Tower_Basic.png");
             cost = 5;
         }
+        //Fast tower
         if(type == 2) {
             range = 100;
-            shootingRate = 25;
+            shootingRate = 15;
             bulletType = 2;
             setImage("Tower_Fast.png");
             cost = 5;
         }
+        //EMP tower
         if(type == 3) {
-            range = 80;
+            range = 100;
             shootingRate = 40;
             bulletType = 3;
             setImage("Tower_Strong.png");
             cost = 15;
         }
+        //Area damage tower 
         if(type == 4) {
             range = 80;
             shootingRate = 125;
             setImage("Tower_EMP_1.png");
             cost = 5;
         }
+        //Long range Tower
         if(type == 5) {
             range = 300;
             shootingRate = 125;
