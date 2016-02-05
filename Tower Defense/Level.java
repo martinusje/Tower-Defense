@@ -105,6 +105,7 @@ public class Level extends World
         }
     }
     
+    //Load game over screen, called from lives
     public void gameOver() 
     {
         Greenfoot.setWorld(new GameOver(((Wave)getObjects(Wave.class).get(0)).getWave()));

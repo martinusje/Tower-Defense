@@ -107,10 +107,12 @@ public class Machine extends Actor
     
     public int getCost()
     {
+        //Return cost to display in level
         return cost;
     }
 
     public int getMouseX() {
+        //Return Mouse X-coördinate for placing machine
         MouseInfo mouse = Greenfoot.getMouseInfo();
         int mouseX = mouse.getX();
         mouseX = 32 * Math.round(mouseX/32) + 16;
@@ -118,6 +120,7 @@ public class Machine extends Actor
     }
 
     public int getMouseY() {
+        //Return Mouse Y-coördinate for placing machine
         MouseInfo mouse = Greenfoot.getMouseInfo();
         int mouseY = mouse.getY();
         mouseY = 32 * Math.round(mouseY/32) + 16;
@@ -125,30 +128,45 @@ public class Machine extends Actor
     }
     
     public void pointAndShoot() {
+        //Make list of all robots in range
         List<Robot> robotsInRange = getObjectsInRange(range, Robot.class);
+        
+        //If robots are in ragne
         if(robotsInRange.size() != 0) {
             //If not emp
             if(type != 4) {
+                //Make list with length of robots that are in range
                 ArrayList counterArrayInRange = new ArrayList(robotsInRange.size());
+                
+                //Get each robots steps (age) and add it to the ounterArray
                 for(Robot a : (List<Robot>) robotsInRange) {
                     double counterCounter = a.getCounter();
                     counterArrayInRange.add(counterCounter);
                 }
 
+                //Get actor who has the highest age
                 Actor robotInRange = robotsInRange.get(counterArrayInRange.indexOf(Collections.max(counterArrayInRange)));
+                //Get it's coördinates
                 robotX = robotInRange.getX();
                 robotY = robotInRange.getY();
 
+                //Turn the robot in range with the oldest age
                 turnTowards(robotInRange.getX(), robotInRange.getY());
+                
+                //If the counter exceeds the shootingRate, shoot and reset counter
                 if(counter >= shootingRate) {
                     getWorld().addObject(new Bullet(getRotation(), robotInRange.getX(), robotInRange.getY(), robotInRange, bulletType), getX(), getY());
                     counter = 0;
                 }
             } else {
+                //If EMP machine
                 if(EMPCounter >= shootingRate) {
+                    //Call speeddown for robots in range
                     for (Robot a : (List<Robot>) robotsInRange) {
                         a.speedDown();
                     }
+                    
+                    //Show emp animation
                     getWorld().addObject(new EMP_Stun(), getX(), getY());
                     EMPCounter = 0;
                 }
@@ -174,28 +192,35 @@ public class Machine extends Actor
         }
     }
     
-    
-    
+    //If draging machine    
     public void dragAndSetMachine() {
+        //If is dragging, set the location
         if(Greenfoot.mouseDragged(this) && (((Coins)getWorld().getObjects(Coins.class).get(0)).getCoins()-cost) >= 0) {
             counter = 0;
             this.setLocation(getMouseX(), getMouseY());
         }
-
+        
+        //If released
         if(Greenfoot.mouseClicked(null)) {
+            //Set machine on placeholder place
             getWorld().addObject(new Machine(type), 704, 64+((type-1)*128));
+            
+            //If out of the playing range, remove
             if(getMouseX() >= 640 || getMouseY() >= 640 || getIntersectingObjects(Machine.class).size() > 0) {
                 getWorld().removeObject(this);
                 return;
             } else {
+                //If set on track, remove 
                 if(getWorld().getColorAt(getMouseX(), getMouseY()).getRed() < 1 && getWorld().getColorAt(getMouseX(), getMouseY()).getGreen() < 1 && getWorld().getColorAt(getMouseX(), getMouseY()).getBlue() < 1) {
                     getWorld().removeObject(this);
                     return;
                 } else {
+                    //If enough coins, set
                     if((((Coins)getWorld().getObjects(Coins.class).get(0)).getCoins()-cost) >= 0){
                         active = 1;
                         ((Coins)getWorld().getObjects(Coins.class).get(0)).coinsDown(cost);
                     } else {
+                        //If not enough coins, remove
                         getWorld().removeObject(this);
                         return;
                     }
@@ -206,12 +231,14 @@ public class Machine extends Actor
 
     public void act() 
     {              
+        //If set, activate
         if(active == 1) {
             pointAndShoot();
         }
+        
+        //If dragging, run dragAndSetMachine method
         if(active == 0) {
             dragAndSetMachine();
         }
-        
     }    
 }

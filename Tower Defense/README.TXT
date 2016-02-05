@@ -4,9 +4,9 @@ Tell the reader (someone who does not know anything about this project)
 all he/she needs to know. The comments should usually include at least:
 ------------------------------------------------------------------------
 
-PROJECT TITLE:
-PURPOSE OF PROJECT:
-VERSION or DATE:
+PROJECT TITLE: Tower Defense
+PURPOSE OF PROJECT: Informatice Assignment
+VERSION or DATE: 5-2-2016
 HOW TO START THIS PROJECT:
-AUTHORS:
+AUTHORS: Joost vd Weerd and Martijn Verhoeven
 USER INSTRUCTIONS:

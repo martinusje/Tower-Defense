@@ -49,7 +49,7 @@ public class Wave extends Actor
         //Update image to new wave
         setImage(new GreenfootImage(Integer.toString(wave), 26, Color.black, new Color(0, 0, 0, 0)));
         
-        //Update wavestring
+        //Update waveString
         waveString = Integer.toString(wave);
     }
 }
