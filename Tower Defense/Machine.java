@@ -12,7 +12,39 @@ import java.awt.Color;
  */
 public class Machine extends Actor
 {
-    int counter = 0, robotX, robotY, active = 0, type, range, shootingRate, bulletType, EMPCounter, EMP_Counter, cost, I;
+    //Main counter
+    int counter = 0;
+    
+    //Coördinates of oldest robot in range, defined hereafter
+    int robotX;
+    int robotY;
+    
+    //0 if being draged, 1 if set
+    int active = 0;
+    
+    //Type of machine
+    int type;
+    
+    //Range of robot
+    int range;
+    
+    //The rate of shooting
+    int shootingRate;
+    
+    //Type of bullet it shoots
+    int bulletType;
+    
+    //Emp shooting counter
+    int EMPCounter;
+    
+    //Emp animation counter
+    int EMP_Counter;
+    
+    //Int to select right animated image
+    int I;
+    
+    //Cost of robot
+    int cost;
 
     public Machine(int type) {
         this.type = type;
@@ -55,17 +87,21 @@ public class Machine extends Actor
             setImage("Tower_Sniper.png");
             cost = 10;
         }
+        
+        //Set counter to corresponding shootingRate
         counter = shootingRate;
         EMPCounter = shootingRate;
     }
 
     public int returnRobotX()
     {
+        //Return robot X for bullet
         return robotX;
     }
 
     public int returnRobotY()
     {
+        //Return robot Y for bullet
         return robotY;
     }
     
@@ -91,6 +127,7 @@ public class Machine extends Actor
     public void pointAndShoot() {
         List<Robot> robotsInRange = getObjectsInRange(range, Robot.class);
         if(robotsInRange.size() != 0) {
+            //If not emp
             if(type != 4) {
                 ArrayList counterArrayInRange = new ArrayList(robotsInRange.size());
                 for(Robot a : (List<Robot>) robotsInRange) {
@@ -117,21 +154,23 @@ public class Machine extends Actor
                 }
             }
         } 
+        //Counter plus 1, emp counter or normal counter
         if(type != 4) {
             counter ++;
         } else {
             EMPCounter ++;
         }
+        //If type 4, make animating emp machine
         if(type == 4) {
             if(EMP_Counter == 6){
-                    if(I == 3){
-                        I = 0;
-                    }
-                    setImage("Tower_EMP_"+ Integer.toString(I+1) + ".png");                  
-                    I ++;
-                    EMP_Counter = 0;
+                if(I == 3){
+                    I = 0;
                 }
-                EMP_Counter ++;
+                setImage("Tower_EMP_"+ Integer.toString(I+1) + ".png");                  
+                I ++;
+                EMP_Counter = 0;
+            }
+            EMP_Counter ++;
         }
     }
     
