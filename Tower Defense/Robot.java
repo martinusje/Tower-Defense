@@ -24,33 +24,27 @@ public class Robot extends SmoothMover
             life = 20*waveStrength;
             setImage("Robot_Slow.png");
         }
-        if(robotType == 3) {
-            speed = 3;
-            life = 14*waveStrength;
-            setImage("Robot_Strong.png");
-        }
-    }
-    
-    public void removeObjectFuction()
-    {
-        getWorld().removeObject(this);
     }
     
     public double getCounter() 
     {
+        //
         return stepCounter;
     }
     
     public void lifeDown()
-    {
+    {   
+        //Damage function for explosive bullet 
         life--;
     } 
   
     public void speedDown() 
     {
+        //Slow robot
         if(speedCounterTrigger == 0) {
             speed = speed/2;
         }
+        //Fun
         speedCounterTrigger = 1;
     }
     
@@ -111,36 +105,41 @@ public class Robot extends SmoothMover
     {
         Bullet theBullet = (Bullet)getOneIntersectingObject(Bullet.class);
         type = theBullet.getType();
+        
         //Basic bullet
         if(type == 1) {
-            life = life - 10;
+            life = life - 7;
         }
         //Weak bullet
         if(type == 2) {
             life --;
         }
-        //Emp stun
-        if(type == 3) {
-            
-        }
         //Area damage bullet
-        if(type == 4) {
-            life = life - 7;
+        if(type == 3) {
+            //lifeDown function 
         }
-        //Long range bullet 
+        //Long range bullet
+        if(type == 4) {
+            life = life - 15;
+        }
+        //Remove bullet if hit. Not type 3, that becomes an explosion
         if(type != 3) {
             getWorld().removeObjects(getIntersectingObjects(Bullet.class));
         }
     }
     
     public void dealingWithDeadness() {
+        //Robot is dead, earn money's $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
         ((Coins)getWorld().getObjects(Coins.class).get(0)).coinsUp(1);
+        //Remove object 
         IWantToDie = 1;
     }
     
     public void dealingWithSlowness()
     {
-        speedCounter++;
+        //Timer for slowness
+        speedCounter++; 
+        //Make sure robot stays on path after being slowed 
         if(speedCounter >= 100 && speed == 2 && Math.round(stepCounter/4) == stepCounter/4) {
             speed = 4;
             speedCounterTrigger = 0;
@@ -150,22 +149,28 @@ public class Robot extends SmoothMover
     
     public void act() 
     {
+        //IWantToDie = 1 if lives are 0 or the object is not longer on the path
         if(IWantToDie == 1) {
+            //If robot is dead remove object
             getWorld().removeObject(this);
             return;
         }
-        if(counter == 2) {
+        //Walk delay 
+        if(counter == 2) { 
             walk();
             counter = 0;
         } else {
             counter++;
         }
+        //If robot is hit, deal with damage 
         if(isTouching(Bullet.class)) {
             dealingWithDamage();
         } 
+        //If life is 0, deal with deadness
         if(life <= 0) {
             dealingWithDeadness();
-        }   
+        }
+        //If robot is hit with EMP, slow robot
         if(speedCounterTrigger == 1) {
             dealingWithSlowness();
         }
