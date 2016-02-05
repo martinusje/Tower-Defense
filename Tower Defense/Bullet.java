@@ -48,9 +48,7 @@ public class Bullet extends SmoothMover
         
         //Declare the owner
         this.theOwner = theOwner;
-    } 
-    
-
+    }
     
     public int getType() {
         //Return type for robot
@@ -77,10 +75,8 @@ public class Bullet extends SmoothMover
             a.lifeDown();
             a.lifeDown();
         }
-        
         //Show explosion
         getWorld().addObject(new Explosion(), getX(), getY());
-        
         //Remove bullet
         IWantToDie = 1;
     }

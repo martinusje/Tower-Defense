@@ -30,7 +30,7 @@ public class Machine extends Actor
             shootingRate = 15;
             bulletType = 2;
             setImage("Tower_Fast.png");
-            cost = 5;
+            cost = 7;
         }
         //EMP tower
         if(type == 3) {
