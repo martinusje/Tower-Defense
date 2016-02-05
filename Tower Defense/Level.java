@@ -27,6 +27,12 @@ public class Level extends World
     {    
         super(768, 768, 1);
         
+        //Set background color
+        GreenfootImage pic = new GreenfootImage(768, 768);
+        pic.setColor(new Color(240,240,240,225));
+        pic.fill();
+        setBackground(pic);
+        
         if(levelSelector == 1){
             //Level 1
             //Set background image
@@ -70,7 +76,7 @@ public class Level extends World
             //Startpointcoördinates
             startPointX = 80;
             startPointY = 640;
-        }
+        }      
         
         //Draw field rectangle
         getBackground().setColor(new Color(10,10,10,255));
