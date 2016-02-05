@@ -12,7 +12,7 @@ public class EMP_Stun extends SmoothMover
     int maxCounter = 0;
     public void act() 
     {
-        //
+        //animate EMP stun image
         if(maxCounter == 6 ) {
             EMP_Stun--;
             setImage("EMP_Stun_" + Integer.toString(EMP_Stun*2) + ".png"); 
@@ -21,7 +21,7 @@ public class EMP_Stun extends SmoothMover
             EMP_Stun++;
             maxCounter++;
         }
-        //
+        //If EMP stun animation is done, remove EMP stun animation
         if(maxCounter == 6 && EMP_Stun == 1) {
             getWorld().removeObject(this);
             return;
