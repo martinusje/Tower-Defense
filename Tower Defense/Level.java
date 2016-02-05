@@ -107,7 +107,7 @@ public class Level extends World
     
     public void gameOver() 
     {
-        Greenfoot.setWorld(new GameOver());
+        Greenfoot.setWorld(new GameOver(((Wave)getObjects(Wave.class).get(0)).getWave()));
     }
         
     //Main counter

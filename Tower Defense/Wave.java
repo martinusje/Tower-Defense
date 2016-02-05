@@ -23,6 +23,10 @@ public class Wave extends Actor
         setImage(new GreenfootImage(text, 26, Color.black, new Color(0, 0, 0, 0)));
     }
     
+    public int getWave() {
+        int wave = Integer.parseInt(waveString);
+        return wave;
+    }
 
     public void imageUp()
     {
