@@ -16,7 +16,7 @@ public class GameOver extends World
      */
     public GameOver(int waves)
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        // Create a new world with 768x768 cells with a cell size of 1x1 pixels.
         super(768,768, 1); 
         
         //Set background image
